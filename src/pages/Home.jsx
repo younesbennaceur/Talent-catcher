@@ -10,7 +10,7 @@ import Play from '../assets/Play.png'
 import IA from '../assets/IA.png'
 import ME from '../assets/ME.png'
 import SK from '../assets/SK.png'
-import card from '../assets/card.png'
+import card from '../assets/Card.png'
 
 import Regle from '../components/Regle'
 import LoginPopup from '../components/Login'
