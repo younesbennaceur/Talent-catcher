@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 
 function Login({ onClose, onValidate }) {
   const [code, setCode] = useState(['', '', '', '', '', '']);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const inputRefs = useRef([]);
 
   const handleInputChange = (index, value) => {
@@ -12,6 +14,9 @@ function Login({ onClose, onValidate }) {
       const newCode = [...code];
       newCode[index] = numericValue;
       setCode(newCode);
+
+      // Effacer l'erreur quand l'utilisateur tape
+      if (error) setError('');
 
       // Passer au champ suivant si on saisit un chiffre
       if (numericValue && index < 5) {
@@ -50,10 +55,34 @@ function Login({ onClose, onValidate }) {
     inputRefs.current[nextIndex]?.focus();
   };
 
-  const handleValidate = () => {
+  const handleValidate = async () => {
     const fullCode = code.join('');
     if (fullCode.length === 6) {
-      onValidate(fullCode);
+      setIsLoading(true);
+      setError('');
+
+      try {
+        const response = await fetch('http://localhost:4000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code: fullCode }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          onValidate(fullCode);
+        } else {
+          setError(data.message || 'Code invalide');
+        }
+      } catch (error) {
+        console.error('Erreur lors de la validation:', error);
+        setError('Erreur de connexion au serveur');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -87,23 +116,32 @@ function Login({ onClose, onValidate }) {
               onChange={(e) => handleInputChange(index, e.target.value)}
               onKeyDown={(e) => handleKeyDown(index, e)}
               onPaste={index === 0 ? handlePaste : undefined}
-              className="w-12 h-12 text-center text-2xl font-bold border-3 border-[#023045] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#023045] focus:border-transparent"
+              className={`w-12 h-12 text-center text-2xl font-bold border-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#023045] focus:border-transparent ${
+                error ? 'border-red-500' : 'border-[#023045]'
+              }`}
               maxLength={1}
               inputMode="numeric"
+              disabled={isLoading}
             />
           ))}
         </div>
 
+        {error && (
+          <div className="text-red-500 text-center font-medium">
+            {error}
+          </div>
+        )}
+
         <button
           onClick={handleValidate}
-          disabled={!isCodeComplete}
+          disabled={!isCodeComplete || isLoading}
           className={`block mx-auto text-2xl font-bold py-3 px-8 rounded-xl transition-colors ${
-            isCodeComplete
+            isCodeComplete && !isLoading
               ? 'bg-[#023045] hover:bg-[#021245] text-white cursor-pointer'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           }`}
         >
-          Valider
+          {isLoading ? 'Validation...' : 'Valider'}
         </button>
       </div>
     </div>
