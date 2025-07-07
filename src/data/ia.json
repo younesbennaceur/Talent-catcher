@@ -1,0 +1,301 @@
+[
+  {
+    "question": "Comment intégrer l'IA dans le processus de création d'annonces de recrutement ? De la pire façon à la meilleure façon",
+    "answers": [
+      "Ne pas utiliser l'IA du tout",
+      "Utiliser l'IA uniquement pour corriger les fautes de grammaire",
+      "Laisser l'IA générer des annonces génériques sans intervention humaine",
+      "Utiliser l'IA pour générer des idées, mais rédiger manuellement les annonces",
+      "Combiner les suggestions de l'IA avec des ajustements manuels pour personnaliser les annonces",
+      "Utiliser l'IA pour analyser les annonces précédentes et optimiser les nouvelles",
+      "Permettre à l'IA de personnaliser les annonces pour différents publics cibles",
+      "Utiliser l'IA pour A/B tester différentes versions d'annonces",
+      "Intégrer des modèles d'IA pour générer des annonces en fonction des données de performance et des tendances du marché",
+      "Développer des annonces entièrement personnalisées en utilisant une IA avancée capable d'analyser et d'adapter le contenu en temps réel selon les profils des candidats"
+    ],
+    "pdf": "IA - IA dans la scorecard.pdf"
+  },
+  {
+    "question": "Comment assurer la qualité et la pertinence des annonces de recrutement générées par l'IA ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne pas vérifier le contenu généré par l'IA",
+      "Se fier uniquement aux suggestions de l'IA sans modification",
+      "Faire une vérification rapide sans ajustement",
+      "Utiliser l'IA pour une première ébauche puis vérifier manuellement",
+      "Combiner les résultats de l'IA avec une relecture par un rédacteur humain",
+      "Faire relire les annonces par plusieurs membres de l'équipe RH",
+      "Utiliser des outils d'évaluation pour comparer les performances des annonces IA et manuelles",
+      "Former l'IA en utilisant des données de performance passées pour améliorer la pertinence des annonces",
+      "Mettre en place un processus de validation incluant des tests utilisateurs pour s'assurer de l'efficacité des annonces",
+      "Développer un système de feedback continu où les résultats des annonces générées par l'IA sont analysés et utilisés pour affiner et améliorer continuellement les algorithmes de l'IA"
+    ],
+    "pdf": "IA - IA et le copywriting.pdf"
+  },
+  {
+    "question": "Comment utiliser l'IA pour personnaliser les messages de recrutement à destination des candidats ? De la pire approche à la meilleure approche",
+    "answers": [
+      "Envoyer des messages génériques générés par l'IA à tous les candidats",
+      "Utiliser l'IA pour personnaliser seulement le prénom du candidat",
+      "Laisser l'IA générer des messages sans revue humaine",
+      "Utiliser l'IA pour créer des messages de suivi standardisés",
+      "Permettre à l'IA de personnaliser les messages en fonction des compétences du candidat",
+      "Combiner l'IA avec des informations spécifiques sur les antécédents des candidats pour créer des messages personnalisés",
+      "Utiliser l'IA pour analyser les profils des candidats et suggérer des personnalisations spécifiques",
+      "Permettre à l'IA de générer des messages personnalisés basés sur les interactions précédentes avec le candidat",
+      "Utiliser l'IA pour créer des messages dynamiques adaptés aux intérêts et aspirations des candidats",
+      "Développer un système d'IA avancé capable de générer des messages ultra-personnalisés en intégrant des données comportementales, des préférences de communication, et des tendances du marché"
+    ],
+    "pdf": "IA - IA et le copywriting.pdf"
+  },
+  {
+    "question": "Comment utiliser l'IA pour améliorer la diversité et l'inclusion dans le processus de recrutement ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne pas utiliser l'IA pour cette tâche",
+      "Utiliser l'IA uniquement pour analyser les CV sans critères de diversité",
+      "Laisser l'IA filtrer les candidats sans ajustements pour la diversité",
+      "Utiliser l'IA pour créer des annonces inclusives de manière générique",
+      "Analyser les données de candidature avec l'IA pour identifier les biais potentiels",
+      "Permettre à l'IA de suggérer des modifications aux descriptions de poste pour attirer un public diversifié",
+      "Utiliser l'IA pour anonymiser les candidatures et réduire les biais inconscients",
+      "Développer des algorithmes d'IA pour évaluer et recommander des candidats diversifiés",
+      "Utiliser des modèles d'IA pour analyser les tendances de diversité et inclusion dans les processus de recrutement",
+      "Intégrer l'IA pour créer des stratégies de recrutement proactives visant à augmenter la diversité et l'inclusion, avec des audits réguliers et des ajustements basés sur les résultats obtenus"
+    ],
+    "pdf": "IA - IA dans la scorecard.pdf"
+  },
+  {
+    "question": "Quelle est la meilleure manière d’utiliser l’IA générative pour créer une scorecard ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne pas utiliser l'IA du tout et improviser la création de la scorecard",
+      "Demander à l’IA de rédiger une scorecard en une seule requête sans fournir de détails sur le poste",
+      "Utiliser l’IA pour générer une scorecard en s’appuyant uniquement sur des descriptions de poste générique",
+      "Utiliser l'IA pour générer des questions d'entretien sans critères spécifiques pour évaluer les réponses",
+      "Faire rédiger l’IA un modèle de scorecard en ne fournissant que le titre du poste",
+      "Utiliser l’IA pour suggérer des critères clés de performance en fournissant des objectifs du poste et une description succincte",
+      "Donner à l'IA des détails spécifiques sur le rôle et l’entreprise pour générer une scorecard personnalisée",
+      "Combiner l’IA avec des benchmarks du secteur pour valider les compétences techniques et comportementales clés",
+      "Utiliser l'IA pour créer une scorecard à partir d'objectifs mesurables du poste et valider les compétences avec des parties prenantes interne",
+      "Utiliser l'IA pour rédiger une scorecard personnalisée, en intégrant des données benchmark et en validant le tout avec des responsables RH et des managers"
+    ],
+    "pdf": "IA - IA dans la scorecard.pdf"
+  },
+  {
+    "question": "Comment l'IA pourrait-elle être utilisée pour améliorer la scorecard de recrutement ? De la moins innovante à la plus innovante",
+    "answers": [
+      "Automatiser le calcul des scores basés sur des critères fixes",
+      "Utiliser l'IA pour extraire les informations clés du CV pour un score initial",
+      "Évaluer uniquement la présence de certains mots-clés pour générer un score",
+      "Analyser les réponses à des tests de logique ou de compétences techniques",
+      "Faire correspondre les données de performance passées de candidats similaires à leur profil",
+      "Analyser des entretiens vidéo pour évaluer des traits comportementaux spécifiques",
+      "Utiliser le machine learning pour ajuster les scores en fonction des performances futures des recrues",
+      "Adapter dynamiquement la scorecard en fonction du poste, du secteur et des tendances du marché",
+      "Utiliser l'IA pour pondérer les critères de manière personnalisée en fonction des besoins spécifiques de l’entreprise",
+      "Apprendre en continu des performances des employés recrutés via la scorecard pour affiner les futurs recrutements"
+    ],
+    "pdf": "IA - IA dans la scorecard.pdf"
+  },
+  {
+    "question": "Quelle serait la méthode IA la plus surprenante mais efficace pour améliorer la diversité et l'inclusion via une scorecard ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ignorer les facteurs de diversité dans le scoring et s’en tenir aux critères techniques",
+      "Faire correspondre uniquement les critères techniques et laisser de côté la diversité des parcours",
+      "Filtrer les candidatures sans analyser la diversité des expériences professionnelles",
+      "Analyser les parcours de formation de manière automatisée sans tenir compte de l'inclusion",
+      "Intégrer des indicateurs de diversité pour garantir une représentation large des candidats",
+      "Utiliser l'IA pour éviter tout biais inconscient dans le processus de présélection",
+      "Introduire un module d'IA pour évaluer la diversité des équipes et ajuster la scorecard en conséquence",
+      "Prendre en compte la diversité des perspectives (origines, parcours, expériences) pour améliorer la créativité de l'équipe",
+      "Utiliser l'IA pour analyser les préjugés dans les évaluations des candidats et les corriger avant décision",
+      "Utiliser un algorithme d'IA pour garantir une diversité optimale dans la sélection finale sans biais"
+    ],
+    "pdf": "IA - IA dans la scorecard.pdf"
+  },
+  {
+    "question": "Quelle est la meilleure manière d’identifier les critères clés d’un poste en utilisant l’IA et un benchmark ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Utiliser uniquement des benchmarks du secteur sans IA",
+      "Demander à l’IA des critères sans prise en compte des spécificités du poste",
+      "Se baser sur des descriptions de poste en ligne via l’IA",
+      "Appliquer un benchmark sans ajustement pour le poste",
+      "Utiliser uniquement les données de l’entreprise pour les critères IA",
+      "Faire générer une première liste par l’IA, puis ajuster manuellement",
+      "Utiliser des benchmarks sectoriels sans validation interne",
+      "Analyser les évaluations de performance internes avec l’IA pour extraire des critères",
+      "Faire une première liste via LinkedIn, puis l’affiner en interne",
+      "Valider les critères IA avec des feedbacks des RH et managers"
+    ],
+    "pdf": "IA - IA dans la scorecard.pdf"
+  },
+  {
+    "question": "De quelle manière utiliser l'IA pour préparer un brief de sourcing ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne pas utiliser l'IA du tout",
+      "Utiliser l'IA uniquement pour générer des descriptions de poste génériques",
+      "Demander à l'IA de compiler des données de sourcing sans les vérifier",
+      "Utiliser l'IA pour rechercher des candidats sans définir de critères spécifiques",
+      "Utiliser l'IA pour analyser les descriptions de poste existantes et suggérer des améliorations",
+      "Utiliser l'IA pour identifier les compétences clés et les tendances du marché",
+      "Intégrer l'IA pour analyser les CV et fournir des insights sur les profils idéaux",
+      "Utiliser l'IA pour générer des questions de brief basées sur les compétences recherchées",
+      "Utiliser l'IA pour personnaliser les briefs en fonction des besoins spécifiques de chaque poste",
+      "Utiliser une plateforme IA intégrée qui combine l'analyse des besoins, des compétences, des tendances du marché et des profils candidats pour créer un brief de sourcing exhaustif et adapté"
+    ],
+    "pdf": "IA - IA et le phoning.pdf"
+  },
+  {
+    "question": "Comment intégrer l’IA dans la définition des critères de sélection dans un brief ? De la moins à la plus innovante approche",
+    "answers": [
+      "Ignorer l’IA dans la définition des critères de sélection",
+      "Utiliser l'IA uniquement pour suggérer des mots-clés dans le brief",
+      "Demander à l’IA de générer une liste de compétences générales pour les candidats",
+      "Laisser l'IA proposer des critères en fonction des tendances générales du secteur",
+      "Utiliser l'IA pour personnaliser les critères selon les spécificités de l’entreprise",
+      "Appliquer l'IA pour analyser les performances des employés actuels et ajuster les critères de sélection",
+      "Laisser l'IA proposer des critères basés sur les compétences \"soft\" et \"hard\"",
+      "Analyser les critères de sélection des concurrents avec un outil d'IA et affiner le brief",
+      "Utiliser l'IA pour intégrer des critères comportementaux et culturels dans le brief",
+      "Laisser l'IA co-rédiger le brief en optimisant les critères pour attirer des talents à haut potentiel"
+    ],
+    "pdf": "IA - IA dans le brief.pdf"
+  },
+  {
+    "question": "Comment l’IA peut-elle accélérer le processus de rédaction d’un brief ? De la pire façon à la meilleure façon",
+    "answers": [
+      "Rédiger manuellement sans l’aide de l’IA",
+      "Utiliser l'IA pour suggérer des phrases ou expressions standards",
+      "Laisser l’IA remplir automatiquement une structure de brief prédéfinie",
+      "Utiliser des modèles d’IA pour générer un premier jet du brief",
+      "Ajuster les sections du brief automatiquement en fonction des compétences recherchées par l'IA",
+      "Analyser les attentes des managers à l’aide de l’IA pour personnaliser le contenu",
+      "Intégrer l'IA pour ajuster les compétences en fonction des besoins du marché",
+      "Automatiser la révision et l’optimisation des critères de sélection via l’IA",
+      "Générer des briefs multi-format adaptés à différents supports (job boards, réseaux sociaux) en quelques clics",
+      "Rédiger un brief final en un temps record, ajusté automatiquement par l'IA en fonction des retours des équipes et des tendances du marché"
+    ],
+    "pdf": "IA - IA dans le brief.pdf"
+  },
+  {
+    "question": "De quelle manière utiliser l'IA pour aider les managers à créer et valider la scorecard durant les briefs pour la sélection des candidats ? De la manière la moins innovante à la plus innovante",
+    "answers": [
+      "Faire les briefs avec le manager en personne, rédiger la scorecard manuellement, puis envoyer un e-mail pour validation sans l'aide de l'IA",
+      "Utiliser une IA pour générer une première version générique de la scorecard basée sur des descriptions de postes en ligne, sans personnalisation spécifique au contexte de l'entreprise",
+      "Utiliser l'IA pour compiler les critères manuels fournis par le manager et structurer une scorecard sans analyse approfondie ni validation",
+      "Utiliser une IA pour faciliter la planification des briefs et des réunions de validation entre les recruteurs et les managers, en optimisant les agendas des deux parties",
+      "Utiliser l'IA pour suggérer une liste initiale de compétences techniques et comportementales à inclure dans la scorecard, basée sur des données internes, avec une validation manuelle par les managers",
+      "Utiliser une IA pour créer un guide d'entretien personnalisé, basé sur la scorecard générée, incluant des questions précises à poser aux candidats pour évaluer les critères définis",
+      "Utiliser l'IA pour analyser automatiquement les postes similaires au sein de l’entreprise et générer des suggestions de critères à inclure dans la scorecard, validés ensuite avec les managers",
+      "Utiliser l'IA pour analyser les feedbacks post-entretien des managers et ajuster la scorecard pour les prochaines vagues de recrutement, en fonction des retours d'expérience",
+      "Utiliser une IA générative pour transcrire automatiquement les briefs oraux avec les managers et générer instantanément une scorecard personnalisée incluant les compétences clés et les critères de sélection",
+      "Utiliser l'IA pour générer une scorecard en temps réel, basée sur les échanges avec les managers, et la comparer automatiquement avec les benchmarks de l'industrie pour affiner les critères de sélection"
+    ],
+    "pdf": "IA - IA dans le brief.pdf"
+  },
+  {
+    "question": "Comment utiliser l’IA pour préparer les appels téléphoniques ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne pas utiliser l’IA pour la préparation des appels",
+      "Utiliser des outils d’IA pour générer des scripts génériques",
+      "Recueillir des informations basiques sur les candidats via l’IA sans personnalisation",
+      "Utiliser l’IA pour créer des listes de questions à poser pendant les appels",
+      "Développer des résumés de profils de candidats automatisés à partir de leurs CV",
+      "Exploiter l’IA pour analyser les données des candidats et proposer des points de discussion pertinents",
+      "Mettre en place des recommandations d’IA basées sur les interactions précédentes avec les candidats",
+      "Utiliser l’IA pour fournir des insights contextuels sur les candidats avant les appels",
+      "Développer des résumés personnalisés et des conseils d'appel basés sur les préférences et les expériences des candidats",
+      "Créer des outils d’IA qui intègrent des recommandations personnalisées en temps réel et des stratégies adaptées pour chaque appel"
+    ],
+    "pdf": "IA - IA et le phoning.pdf"
+  },
+  {
+    "question": "Comment utiliser l’IA pour améliorer l’efficacité des appels téléphoniques ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Utiliser l’IA uniquement pour la planification des appels sans analyse de l’efficacité",
+      "Recueillir des données de manière sporadique sans analyser les performances",
+      "Mettre en place des alertes de rappel automatiques pour les appels",
+      "Utiliser l’IA pour analyser le temps de conversation moyen et ajuster les appels en conséquence",
+      "Utiliser l’IA pour évaluer les réponses des candidats et fournir des suggestions de follow-up",
+      "Intégrer des outils d’analyse de sentiment pour améliorer la compréhension des réponses des candidats",
+      "Développer des recommandations d'IA pour améliorer les techniques de négociation et de persuasion",
+      "Utiliser des outils d’IA pour suivre les tendances et les modèles dans les interactions téléphoniques",
+      "Mettre en place des analyses avancées pour évaluer l’impact des différentes approches de phoning sur les résultats de recrutement",
+      "Utiliser l’IA pour fournir des feedbacks instantanés et des conseils en temps réel pendant les appels afin d’optimiser la performance des recruteurs"
+    ],
+    "pdf": "IA - IA et le phoning.pdf"
+  },
+  {
+    "question": "Comment rédiger un prompt RH inefficace à excellent pour expliquer un concept comme la blockchain à des collègues ?",
+    "answers": [
+      "C’est quoi la blockchain ?",
+      "Donne-moi des infos techniques sur la blockchain.",
+      "Explique la blockchain en 3 lignes.",
+      "Explique-moi la blockchain sans jargon.",
+      "Fais-moi une synthèse vulgarisée de la blockchain.",
+      "Explique la blockchain de façon simple, à l’oral.",
+      "Je suis RH, vulgarise la blockchain pour que je la comprenne.",
+      "Je suis RH, explique la blockchain pour que je puisse l’expliquer à mes collègues.",
+      "Je suis RH, je dois convaincre mes collègues que la blockchain est utile. Explique-la simplement.",
+      "Je suis RH, je dois expliquer la blockchain à mes collègues en réunion, de manière engageante et vulgarisée."
+    ]
+  },
+  {
+    "question": "Quel est le meilleur prompt pour obtenir des idées de projets RH innovants ?",
+    "answers": [
+      "Donne-moi un projet RH.",
+      "Quels sont les projets RH à la mode ?",
+      "Des idées RH récentes ?",
+      "Propose 3 projets RH.",
+      "Propose des projets RH pour 2025.",
+      "Je cherche des idées RH dans le digital.",
+      "Je suis RH, propose-moi des idées de projets autour du bien-être au travail.",
+      "Je suis RH, propose-moi des projets RH adaptés à une entreprise en forte croissance.",
+      "Je suis responsable RH dans une PME, propose-moi des projets innovants adaptés à mon budget.",
+      "Je suis responsable RH dans une entreprise industrielle avec un turnover élevé. Propose-moi 5 projets RH innovants et réalistes, avec un court pitch pour chacun."
+    ]
+  },
+  {
+    "question": "Quel prompt est le plus pertinent pour analyser une campagne de recrutement ?",
+    "answers": [
+      "Analyse cette campagne RH.",
+      "Donne-moi ton avis sur notre campagne de recrutement.",
+      "Est-ce que cette campagne marche ?",
+      "Analyse les points faibles de notre campagne.",
+      "Quelles améliorations proposerais-tu pour cette campagne ?",
+      "Analyse cette campagne de recrutement et dis-moi ce qui ne va pas.",
+      "Je suis RH, analyse cette campagne de recrutement et propose 3 axes d’amélioration.",
+      "Je suis RH, analyse cette campagne de recrutement et identifie ce qui impacte négativement l’attractivité.",
+      "Je suis RH, analyse notre dernière campagne LinkedIn en identifiant les biais potentiels et l’impact sur la diversité.",
+      "Je suis RH, analyse les performances de notre campagne de recrutement (candidatures, conversion, image employeur) et propose des recommandations concrètes et actionnables."
+    ]
+  },
+  {
+    "question": "Quel prompt est le plus efficace pour structurer une grille d’entretien ?",
+    "answers": [
+      "Fais-moi une grille d’entretien.",
+      "Donne-moi une liste de questions d’entretien.",
+      "Grille entretien RH SVP.",
+      "Structure une grille pour un poste de développeur.",
+      "Fais une grille simple pour recruter un junior.",
+      "Je suis RH, fais-moi une grille pour un entretien de technicien.",
+      "Je suis RH, fais-moi une grille pour évaluer les compétences techniques et comportementales.",
+      "Je suis RH, propose une grille d’entretien pour un poste de développeur backend, avec des critères notés.",
+      "Je suis RH, crée une grille structurée avec critères, pondérations et questions pour un poste de développeur backend.",
+      "Je suis RH, crée une grille d’entretien notée pour un développeur backend, avec critères techniques, soft skills, pondération, et guide d’évaluation utilisable par les managers opérationnels."
+    ]
+  },
+  {
+    "question": "Quel prompt est le plus stratégique pour automatiser des réponses aux questions RH récurrentes ?",
+    "answers": [
+      "Fais un bot RH.",
+      "Comment automatiser les réponses RH ?",
+      "Écris une FAQ RH.",
+      "Propose 5 réponses types aux questions RH.",
+      "Je veux automatiser les réponses à 5 questions fréquentes.",
+      "Je suis RH, propose un modèle de réponse pour les congés.",
+      "Je suis RH, écris 5 réponses types à automatiser.",
+      "Je suis RH, crée un script pour répondre aux questions fréquentes RH.",
+      "Je suis RH, crée un modèle de chatbot pour répondre aux questions sur les congés et les arrêts maladie.",
+      "Je suis RH, crée un script de chatbot pour répondre aux 10 questions les plus fréquentes des salariés (congés, arrêts, primes...), en langage clair et structuré."
+    ]
+  }
+]

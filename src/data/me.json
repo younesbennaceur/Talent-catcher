@@ -1,0 +1,226 @@
+[
+  {
+    "question": "Quelle promesse RH formuler dans ton EVP ? De la plus inspirante à la plus fade",
+    "answers": [
+      "Tu participes à un projet à impact environnemental et social",
+      "Tu construis le futur avec une équipe visionnaire",
+      "Tu es libre de choisir ton rythme et ton lieu de travail",
+      "Tu reçois un vrai budget de formation chaque année",
+      "On respecte ton équilibre pro/perso",
+      "On t'offre du télétravail",
+      "Bonne ambiance sympa garantie",
+      "Poste évolutif dans une structure dynamique",
+      "Tu as du café gratuit"
+    ]
+  },
+  {
+    "question": "Quelle info mettre dans la section 'Pourquoi nous rejoindre' ? De la plus utile à la moins utile",
+    "answers": [
+      "Notre raison d'être et nos valeurs concrètes",
+      "Des témoignages authentiques de collaborateurs",
+      "Un aperçu des projets à fort impact",
+      "Notre politique de formation et d'évolution",
+      "Les conditions de travail et les outils",
+      "Le process de recrutement",
+      "Nos locaux et services",
+      "Le dress code",
+      "La taille des équipes",
+      "La marque de la machine à café"
+    ]
+  },
+  {
+    "question": "Quel titre d'annonce peux-tu imaginer pour un poste de comptable ? De la plus drôle à la moins drôle",
+    "answers": [
+      "Le roi du tableur est attendu au royaume",
+      "Héros des chiffres cherche aventure stable",
+      "Maître Jedi de la balance comptable",
+      "Super comptable cherche cape et chaise ergonomique",
+      "Comptable ninja, maîtrisez l'art du bilan",
+      "Gardien·ne du flux financier",
+      "Comptable confirmé·e",
+      "Technicien·ne comptable recherché·e",
+      "Responsable comptabilité",
+      "Comptable H/F"
+    ]
+  },
+  {
+    "question": "Quel titre d'annonce peux-tu imaginer pour un poste de comptable ? De la plus accrocheuse à la plus ennuyeuse",
+    "answers": [
+      "Et si tu faisais parler les chiffres autrement ?",
+      "Viens révolutionner la compta (sans costard)",
+      "Donne du sens à ton talent pour les bilans",
+      "Ici, la compta rime avec liberté",
+      "Des chiffres, mais pas d'ennui",
+      "CDI - Comptable (avec équipe sympa)",
+      "Poste stable, environnement rassurant",
+      "Comptable autonome - CDI",
+      "Recrutement comptable confirmé",
+      "Offre d'emploi : comptable"
+    ]
+  },
+  {
+    "question": "Quelle stratégie contenu pour attirer des talents ? De la moins crédible à la plus pertinente",
+    "answers": [
+      "Promettre une ambiance 'familiale' sans preuve",
+      "Montrer uniquement les afterworks",
+      "Utiliser des photos de banques d'images",
+      "Publier une fois tous les 3 mois",
+      "Partager des citations inspirantes sans contexte",
+      "Poster des offres avec un ton décalé",
+      "Montrer les coulisses d'un projet collectif",
+      "Donner la parole aux salarié·es",
+      "Publier régulièrement des formats variés",
+      "Créer une mini-série immersive autour des métiers"
+    ]
+  },
+  {
+    "question": "Que publier sur LinkedIn pour séduire un développeur ? De la plus anecdotique à la plus stratégique",
+    "answers": [
+      "Un selfie RH en réunion",
+      "La photo du baby-foot",
+      "Un post sur la galette des rois",
+      "Le pitch institutionnel",
+      "L'annonce brute du poste",
+      "Des chiffres-clés du projet",
+      "Des retours de techs en interne",
+      "Un thread sur une stack technique utilisée",
+      "Un challenge dev ou bug à résoudre",
+      "Une vidéo sur le quotidien dans l'équipe tech"
+    ]
+  },
+  {
+    "question": "Comment rédiger un message d'approche ? De la plus efficace à la plus personnalisée",
+    "answers": [
+      "Message ultra personnalisé avec lien vers un projet précis",
+      "Référence à un post ou à une contribution du profil",
+      "Mention d'un point commun ou valeur partagée",
+      "Compliment sur le parcours",
+      "Lien direct vers l'offre avec synthèse",
+      "Résumé du poste et de l'équipe",
+      "Accroche 'Bonjour, vous cherchez un nouveau défi ?'",
+      "Message court type 'On recrute !'",
+      "Copier-coller d'une annonce",
+      "Aucun message, juste une demande de contact"
+    ]
+  },
+  {
+    "question": "Comment répondre à un candidat non retenu ? De la moins bienveillante à la plus bienveillante",
+    "answers": [
+      "Pas de réponse",
+      "Réponse automatique générique",
+      "Message très formel sans prénom",
+      "Message copié-collé sans feedback",
+      "Message avec formule de politesse",
+      "Message personnalisé",
+      "Message + remerciement sincère",
+      "Feedback constructif",
+      "Proposition de garder le lien pour d'autres postes",
+      "Invitation à un entretien carrière ou réseau"
+    ]
+  },
+  {
+    "question": "Comment décrire la mission dans une offre de poste ? De la pire tournure à la plus engageante",
+    "answers": [
+      "Vous serez en charge d'exécuter les tâches confiées",
+      "Vous devrez respecter les process",
+      "Exécution des opérations comptables quotidiennes",
+      "Assurer la saisie et la clôture comptable",
+      "Réaliser les missions confiées par le N+1",
+      "Contribuer au bon fonctionnement du service",
+      "Piloter les flux financiers de l'entreprise",
+      "Structurer et optimiser les pratiques comptables",
+      "Être le point d'appui stratégique du pôle finances",
+      "Agir comme partenaire clé dans la croissance"
+    ]
+  },
+  {
+    "question": "Comment inciter un inconnu à postuler à ton offre ? De la plus intrusive à la plus fluide",
+    "answers": [
+      "Message sans prénom ni contexte",
+      "Relance toutes les 24h sans réponse",
+      "Lien vers l'offre sans aucun mot",
+      "Proposition floue du type 'On échange ?'",
+      "Message long et auto-centré",
+      "Présentation rapide du poste et contexte",
+      "Mise en valeur du projet et de l'équipe",
+      "Mention personnalisée de son parcours",
+      "Ouverture bienveillante à la discussion",
+      "Invitation à un échange libre autour de ses aspirations"
+    ]
+  },
+  {
+    "question": "Quelle manière d'aborder un candidat passif sur LinkedIn ? De la plus élégante à la moins élégante",
+    "answers": [
+      "Message court, personnalisé et respectueux du temps",
+      "Invitation à échanger sur son parcours, sans offre directe",
+      "Référence à un projet commun ou sujet partagé",
+      "Compliment sur une publication technique",
+      "Message construit avec contexte et valeur ajoutée",
+      "Lien direct vers une offre sans contexte",
+      "Message générique de masse",
+      "Demande de contact sans mot",
+      "DM envoyé à 23h un samedi",
+      "Emoji seul en guise de message"
+    ]
+  },
+  {
+    "question": "De la phrase d'annonce la plus ennuyeuse à la plus intrigante : Comment commencer un post LinkedIn RH ?",
+    "answers": [
+      "Nous recherchons un profil dynamique",
+      "Entreprise en forte croissance, rejoignez-nous",
+      "Poste à pourvoir immédiatement",
+      "Vous êtes motivé·e ? Nous aussi.",
+      "Et si on cassait les codes du recrutement ?",
+      "On te parle d'une vraie aventure humaine",
+      "Un petit post pour une grande mission",
+      "Devine ce qui fait vibrer notre équipe ?",
+      "Parlons peu, parlons RH",
+      "Tu veux du sens ? On en a à revendre"
+    ]
+  },
+  {
+    "question": "Comment attirer des candidats tech en 2025 ? De la plus pertinente à la moins pertinente",
+    "answers": [
+      "Proposer un meet-up tech avec ton équipe",
+      "Lancer un challenge code ou bug bounty",
+      "Faire un post LinkedIn avec ta stack",
+      "Créer une série vidéo 'Dev Stories'",
+      "Publier des memes tech",
+      "Liker les posts des devs et prier",
+      "Booster une annonce avec des emojis",
+      "Dire 'on cherche des rockstars'",
+      "Envoyer des InMail automatiques",
+      "Promettre une ambiance start-up (sans preuves)"
+    ]
+  },
+  {
+    "question": "Que publier pour valoriser ta culture d'entreprise ? Du poste RH le plus ringard au plus inspirant",
+    "answers": [
+      "Photo d'équipe devant une table de ping-pong",
+      "Citation inspirante de Steve Jobs",
+      "Vidéo corporate de 2017 avec fond musical épique",
+      "Post avec logo en bannière et texte centré",
+      "Témoignage collaborateur en selfie",
+      "Interview croisée entre RH et managers",
+      "Story Instagram : coulisses d'un projet collectif",
+      "Vidéo courte : 1 journée dans la peau de...",
+      "Article de blog écrit par un salarié",
+      "Série de portraits métiers avec anecdotes personnelles"
+    ]
+  },
+  {
+    "question": "De la question la plus absurde à la plus pertinente : Que poser en entretien à un·e chargé·e de recrutement",
+    "answers": [
+      "Si tu étais un animal, lequel serais-tu ?",
+      "Tu préfères Excel ou PowerPoint ?",
+      "As-tu déjà pleuré au travail ?",
+      "Comment te vois-tu dans 10 ans ?",
+      "Cite-moi 3 soft skills que tu détestes entendre",
+      "Quelle a été ta plus grosse prise de risque RH ?",
+      "Comment fais-tu monter en compétence une équipe ?",
+      "Qu'est-ce qui te rend fier·e dans ton métier ?",
+      "Quels signaux faibles repères-tu dans un recrutement ?",
+      "Quelle est ta vision du rôle RH dans 5 ans ?"
+    ]
+  }
+]

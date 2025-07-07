@@ -5,12 +5,12 @@ import Logo from '../assets/Logo.png'
 import Quitter from '../assets/Quitter.png'
 import Pause from '../assets/Pause.png'
 import Play from '../assets/Play.png'
-import FichePDF from '../assets/IA.pdf'
+
 
 function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [timer, setTimer] = useState(45);
+  const [timer, setTimer] = useState(180); // 3 minutes = 180 secondes
 
   useEffect(() => {
     if (isPaused) return;
@@ -31,6 +31,25 @@ function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) 
     setIsFlipped(!isFlipped);
   };
 
+  // Fonction pour formatter le temps en minutes:secondes
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Fonction pour ouvrir le PDF spécifique à la question
+  const openPDF = () => {
+    if (cardData.backData && cardData.backData.pdf) {
+      // Si la question a un PDF spécifique
+      window.open(`/pdf/${cardData.backData.pdf}`, '_blank');
+    } else {
+      // Fallback : utiliser un PDF générique basé sur l'ID de la carte
+      const pdfName = `${cardData.id}.pdf`;
+      window.open(`/pdf/${pdfName}`, '_blank');
+    }
+  };
+
   return (
     <div
       className="fixed inset-0 bg-cover bg-center bg-no-repeat flex flex-col gap-4 py-6 px-10 z-50"
@@ -40,8 +59,8 @@ function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) 
       <div className="flex justify-between items-center">
         <img className="w-32 h-14" src={Logo} alt="Logo" />
         <div className="flex gap-4 items-center">
-          <div className=" text-[#023047]  font-bold text-xl">
-            Temps restant: {timer}s
+          <div className="text-[#023047] font-bold text-xl">
+            Temps restant: {formatTime(timer)}
           </div>
           <img
             className="w-14 h-14 cursor-pointer"
@@ -91,10 +110,10 @@ function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) 
           onClick={onClose}
           className="text-2xl hover:bg-[#023047] border-4 border-[#023047] hover:border-white hover:text-white text-[#023047] font-semibold py-2 px-12 rounded-xl"
         >
-          On change d’univers
+          On change d'univers
         </button>
         <button
-          onClick={() => window.open(FichePDF, '_blank')}
+          onClick={openPDF}
           className="text-2xl hover:text-[#023047] bg-[#023047] border-4 hover:bg-transparent hover:border-[#023047] text-white font-semibold py-2 px-12 rounded-xl"
         >
           Voir la fiche pédagogique

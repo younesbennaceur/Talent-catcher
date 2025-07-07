@@ -12,6 +12,13 @@ import ME from '../assets/ME.png'
 import SK from '../assets/SK.png'
 import card from '../assets/Card.png'
 
+// Import des fichiers JSON
+import se from '../data/se.json'
+import ia from '../data/ia.json'
+import me from '../data/me.json'
+import skillsData from '../data/sk.json'
+
+
 import Regle from '../components/Regle'
 import LoginPopup from '../components/Login'
 
@@ -27,13 +34,57 @@ function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [playedCards, setPlayedCards] = useState([]);
+  const [cardData, setCardData] = useState([]);
+
+  // Initialiser les données des cartes avec les fichiers JSON
+  useEffect(() => {
+    const initialCardData = [
+      {
+        id: 'sourcing',
+        image: card,
+        title: 'Sourcing',
+        alt: 'Sourcing',
+        color: '#FB8500',
+        backData: se,
+      },
+      {
+        id: 'ia',
+        image: IA,
+        title: 'Intelligence Artificielle',
+        alt: 'IA',
+        color: '#023047',
+        backData: ia,
+      },
+      {
+        id: 'me',
+        image: ME,
+        title: 'Marque Employeur',
+        alt: 'ME',
+        color: '#FFB703',
+        backData: me,
+      },
+
+      
+      {
+        id: 'skills',
+        image: SK,
+        title: 'Posture et soft skills',
+        alt: 'Skill player',
+        color: '#8ECAE6',
+        backData: skillsData,
+      }
+
+    ];
+    
+    setCardData(initialCardData);
+  }, []);
 
   const togglePause = () => setIsPaused(!isPaused);
 
   const handleLaunchGame = () => setShowLogin(true);
 
   const handleLoginValidate = (code) => {
-    console.log('Code saisi:', code);
+    console.log("Code saisi:", code);
     setToken(true);
     setShowLogin(false);
   };
@@ -45,133 +96,8 @@ function Home() {
     setPlayedCards([]);
   };
 
-  const cardData = [
-    {
-      id: 'sourcing',
-      image: card,
-      title: 'Sourcing et évaluation',
-      alt: 'Planning projet',
-      color: '#FB8500',
-      backData: [
-        {
-          question: 'Quels sont les éléments les plus convaincants pour attirer un candidat ?',
-          subtitle: 'De l\'élément le moins convaincant au plus convaincant',
-          items: [
-            'Salaire compétitif',
-            'Horaires de travail flexibles',
-            'Avantages sociaux (mutuelle, tickets restaurant)',
-            'Bonnes conditions de travail',
-            'Opportunités de formation et de développement',
-          ],
-        },
-        {
-          question: 'Qu\'est-ce qui motive un candidat à rester dans une entreprise ?',
-          subtitle: 'Facteurs de fidélisation',
-          items: [
-            'Climat de travail agréable',
-            'Possibilités d\'évolution',
-            'Reconnaissance du travail',
-            'Équilibre vie pro/perso',
-            'Management bienveillant',
-          ],
-        },
-      ],
-    },
-    {
-      id: 'ia',
-      image: IA,
-      title: 'Intelligence Artificielle',
-      alt: 'IA stratégie',
-      color: '#219EBC',
-      backData: [
-        {
-          question: 'Comment l\'IA transforme-t-elle le recrutement ?',
-          subtitle: 'Des outils les moins utilisés aux plus révolutionnaires',
-          items: [
-            'Tri automatique des CV',
-            'Analyse prédictive des performances',
-            'Chatbots pour premiers entretiens',
-            'Matching candidat-poste intelligent',
-          ],
-        },
-        {
-          question: 'Quels sont les défis liés à l\'IA dans le recrutement ?',
-          subtitle: 'Points à surveiller',
-          items: [
-            'Biais algorithmiques',
-            'Manque de transparence',
-            'Dépendance à la technologie',
-            'Protection des données personnelles',
-          ],
-        },
-      ],
-    },
-    {
-      id: 'skills',
-      image: SK,
-      title: 'Posture et soft skills',
-      alt: 'Skill player',
-      color: '#8ECAE6',
-      backData: [
-        {
-          question: 'Quelles soft skills sont essentielles aujourd\'hui ?',
-          subtitle: 'Des compétences de base aux plus recherchées',
-          items: [
-            'Ponctualité et fiabilité',
-            'Communication écrite claire',
-            'Travail en équipe',
-            'Adaptation au changement',
-            'Résolution de problèmes',
-          ],
-        },
-        {
-          question: 'Postures professionnelles clés',
-          subtitle: 'Attitudes recommandées',
-          items: [
-            'Leadership et influence',
-            'Intelligence émotionnelle',
-            'Pensée critique et analytique',
-            'Créativité et innovation',
-            'Agilité mentale et apprentissage continu',
-          ],
-        },
-      ],
-    },
-    {
-      id: 'marque',
-      image: ME,
-      title: 'Marque employeur',
-      alt: 'Mon parcours',
-      color: '#023047',
-      backData: [
-        {
-          question: 'Comment construire une marque employeur forte ?',
-          subtitle: 'Des actions basiques aux stratégies avancées',
-          items: [
-            'Présence sur les réseaux sociaux',
-            'Témoignages d\'employés authentiques',
-            'Transparence sur les valeurs d\'entreprise',
-            'Processus de recrutement optimisé',
-          ],
-        },
-        {
-          question: 'Stratégies pour renforcer la marque employeur',
-          subtitle: 'Idées avancées',
-          items: [
-            'Programmes de développement visible',
-            'Engagement sociétal affiché',
-            'Innovation dans les pratiques RH',
-            'Expérience candidat exceptionnelle',
-            'Ambassadeurs internes actifs',
-            'Écosystème de marque cohérent et différenciant',
-          ],
-        },
-      ],
-    },
-  ];
-
   const handleCardClick = (cardInfo) => {
-    if (token && !playedCards.includes(cardInfo.id)) {
+    if (token) {
       const randomBack = getRandomBackData(cardInfo.backData);
       const cardWithRandomBack = {
         ...cardInfo,
@@ -182,21 +108,8 @@ function Home() {
   };
 
   const handleCloseCardDetail = () => {
-    if (selectedCard) {
-      setPlayedCards([...playedCards, selectedCard.id]);
-      setSelectedCard(null);
-    }
+    setSelectedCard(null);
   };
-
-  useEffect(() => {
-    if (playedCards.length === cardData.length && cardData.length !== 0) {
-      alert('Fin de partie ! Toutes les cartes ont été jouées.');
-      setPlayedCards([]);
-      setToken(false);
-      setSelectedCard(null);
-      setIsPaused(false);
-    }
-  }, [playedCards, cardData.length]);
 
   return (
     <div
@@ -236,7 +149,7 @@ function Home() {
       {/* Corps principal */}
       <div className="flex flex-col gap-8">
         <h1 className="text-center text-5xl">
-          {token ? ' Laissez les dés choisir l’univers à explorer !' : 'Prêt·e pour une partie ?'}
+          {token ? "Laissez les dés choisir l'univers à explorer !" : "Prêt·e pour une partie ?"}
         </h1>
 
         <div className="flex flex-row justify-between">
@@ -244,14 +157,14 @@ function Home() {
             <div
               key={cardInfo.id}
               onClick={() => handleCardClick(cardInfo)}
-              style={{ opacity: playedCards.includes(cardInfo.id) ? 0.5 : 1, pointerEvents: playedCards.includes(cardInfo.id) ? 'none' : 'auto' }}
+              className="cursor-pointer"
             >
               <Card 
                 image={cardInfo.image} 
                 title={cardInfo.title} 
                 alt={cardInfo.alt} 
                 color={cardInfo.color} 
-                backData={null}  // pas de backData sur la vue liste
+                backData={null}
                 isFlippable={false}
               />
             </div>

@@ -1,0 +1,682 @@
+[
+  {
+    "question": "Quelle technique de sourcing utiliser pour recruter des profils IT ? De la technique la moins efficace à la plus efficace",
+    "answers": [
+      "Distribuer de flyers dans la rue",
+      "Diffuser des annonces dans la presse papier locale",
+      "Participer à des salons de l'emploi généralistes",
+      "Créer des offres d'emploi sur les jobboards généralistes",
+      "Programme de cooptation interne",
+      "Recruter via des agences de recrutement généralistes",
+      "Participer à des salons et des conférences IT spécialisées",
+      "Rechercher sur des forums spécialisés ou des communautés",
+      "Utiliser LinkedInRecruiter et l'approche directe",
+      "Organiser des hackathons ou des concours de codage"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quelle méthode de sourcing utiliser pour obtenir des candidatures rapidement ? De la méthode la plus lente à la méthode la plus rapide ?",
+    "answers": [
+      "Participer à des salons de l'emploi",
+      "Poster une annonce dans des journaux locaux",
+      "Créer une campagne de communication sur les réseaux",
+      "Faire du sourcing via une agence de recrutement",
+      "Diffuser une annonce sur des jobboards",
+      "Promouvoir la cooptation interne via les collaborateurs",
+      "Envoyer des mails ciblés via des bases de données",
+      "Utiliser LinkedIn Recruiter",
+      "Faire du sourcing sur des forums spécialisés",
+      "Faire des annonces sponsorisées sur des plateformes"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Proposez une technique de sourcing de la plus basique à la plus innovante !!",
+    "answers": [
+      "Poster une annonce sur un job board généraliste",
+      "Diffuser l'annonce sur le site carrière de l'entreprise",
+      "Afficher des annonces sur les réseaux sociaux de l'entreprise",
+      "Utiliser des cabinets de recrutement",
+      "Utiliser la cooptation interne",
+      "Recherchre activement sur LinkedIn",
+      "Faire du sourcing sur des forums spécialisés",
+      "Participer à des hackathons ou concours spécialisés",
+      "Cibler des candidats via des publicités personnalisées",
+      "Utiliser l'IA pour le matching de candidats"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quelles sont les techniques de sourcing à utiliser pour attirer des junior ? De la technique la moins efficace à la plus efficace ?",
+    "answers": [
+      "Publier des annonces dans des journaux papier",
+      "Diffuser des offres sur des job boards généralistes",
+      "Participer à des salons de l'emploi généralistes",
+      "Créer des programmes de cooptation",
+      "Utiliser des agences de recrutement généralistes",
+      "Poster des offres sur des plateformes dédiées aux étudiants",
+      "Participer à des forums de recrutement d’écoles et universités",
+      "Organiser ou sponsoriser des événements étudiants",
+      "Annonces ciblées sur les réseaux sociaux",
+      "Création de partenariats avec des écoles et universités"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quels sont les outils de sourcing ? De l’outil le moins coûteux au plus coûteux ?",
+    "answers": [
+      "Cooptation interne",
+      "Sourcer sur des forums spécialisés",
+      "Sourcer sur les réseaux sociaux gratuits",
+      "Diffuser des annonces sur des jobboards gratuits",
+      "Participer à des évènements de networking ou meetup",
+      "Faire des emails ciblés avec des bases de données",
+      "Créer des annonces sponsorisées sur des jobboards payants",
+      "Annonces payantes sur LinkedIn",
+      "Utiliser des outils d’ATS (Applicant Tracking System)",
+      "Utiliser LinkedIn Recruiter"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quel est l’intérêt de la scorecard ? De l'idée la moins utile à la plus utile ?",
+    "answers": [
+      "Remplir des cases pour cocher des critères sans réel objectif",
+      "Comparer les candidats uniquement sur leur niveau d’expérience",
+      "Avoir une vue d’ensemble du profil des candidats",
+      "Normaliser les évaluations entre les différents recruteurs pour garantir une cohérence",
+      "Évaluer des compétences techniques spécifiques au poste",
+      "Aligner les recruteurs et managers sur les compétences et critères essentiels au poste",
+      "Éliminer les biais de recrutement en se concentrant sur des critères mesurables",
+      "Optimiser les entretiens pour poser des questions ciblées sur critères définis",
+      "Assurer un suivi du processus de recrutement",
+      "Assurer un suivi du processus de recrutement en mesurant"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Comment identifier les critères d’une scorcard ? De l'idée la moins pertinente à la plus pertinente ?",
+    "answers": [
+      "Choisir des critères basés uniquement sur l'âge et le nombre d’années d’expérience",
+      "Utiliser uniquement les diplômes comme critère principal de",
+      "Sélectionner des critères qui se limitent aux compétences techniques et ignorer les soft skills",
+      "Définir des critères basés uniquement sur les postes occupés par le candidat",
+      "Consulter des descriptions de postes standards sans les personnaliser pour l’entreprise",
+      "Définir les critères de la scorecard en fonction des compétences techniques spécifiques au recrutement (outils, processus de recrutement, etc.)",
+      "Inclure des compétences comportementales comme la communication, la gestion des priorités et la capacité à travailler en équipe",
+      "Collaborer avec le manager et les parties prenantes pour le poste",
+      "Analyser les performances des précédents chargés de recrutement pour définir les critères qui ont contribué à leur succès ou à leur échec",
+      "Aligner les critères de la scorecard avec les objectifs stratégiques de l’entreprise, en incluant des compétences liées à l’innovation, à l’adaptabilité et à la gestion du changement"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Lors d’un recrutement, comment accompagner son hiring manager pour définir les critères d’une scorecard ? De l'idée la moins pertinente à la plus pertinente ?",
+    "answers": [
+      "Laisser le hiring manager définir seul tous les critères",
+      "Se baser uniquement sur les critères utilisés lors des précédents recrutements sans ajustement",
+      "Définir les critères basés uniquement sur le CV et les qualifications académiques des candidats",
+      "Se concentrer uniquement sur les critères techniques en oubliant les compétences comportementales (soft skills).",
+      "Utiliser un modèle de scorecard générique sans personnalisation pour le poste",
+      "Demander au hiring manager de prioriser les critères techniques clés en fonction des compétences les plus souvent manquantes chez les candidats passés",
+      "Collaborer avec le hiring manager pour identifier les priorités du poste",
+      "Collaborer avec le hiring manager pour définir des critères spécifiques basés sur les objectifs à court terme de l’équipe",
+      "Analyser les compétences des meilleurs employés actuels pour déterminer les critères obligatoires à inclure dans la scorecard.",
+      "S’appuyer sur des benchmarks et tendances du secteur pour ajuster les critères en fonction des évolutions du marché"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quels critères permettraient d’évaluer la performance future d’un candidat pour un poste de marketing ? Des critères les moins pertinents au plus pertinents",
+    "answers": [
+      "Capacité à travailler en équipe",
+      "Réseau professionnel dans l'industrie",
+      "Expérience en gestion de campagnes publicitaires",
+      "Capacité à travailler sous pression",
+      "Compréhension des tendances du marché",
+      "Compétences en communication",
+      "Connaissance des outils de marketing",
+      "Compétences analytiques",
+      "Expérience préalable en marketing digital",
+      "Créativité et innovation"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quelles méthodes utiliser pour détecter les compétences techniques d’un candidat qui postule sur un poste d’ingénieur devops ? De la méthode la moins probable à la plus probable",
+    "answers": [
+      "Observation en conditions de travail simulées",
+      "Feedback des anciens employeurs",
+      "Tests de logique et de résolution de problèmes",
+      "Évaluation des compétences via simulations",
+      "Références professionnelles",
+      "Analyse du portfolio de projets",
+      "Évaluation des certifications professionnelles",
+      "Exercice pratique en situation réelle",
+      "Entretien technique avec un expert",
+      "Test technique en ligne"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Tu viens d'être recruté par l'équipe \"Marque employeur\". Tu es en charge de rédiger les fiches de poste et de proposer la meilleure promesse employeur. Identifie des propositions de la moins étonnante à la plus étonnante que l’entreprise pourrait offrir.",
+    "answers": [
+      "Parking gratuit",
+      "Café gratuit",
+      "Horaires flexibles",
+      "Programme de bien-être au travail",
+      "Journées de télétravail illimitées",
+      "Congé sabbatique payé après 5 ans de service",
+      "Programme de congés illimités",
+      "Budget annuel pour le développement personnel",
+      "Option d'adoption d'un animal de compagnie payé",
+      "Voyages d'équipe internationaux annuels"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quelles techniques de sélection utiliser pour capter les meilleurs profils? De la pire idée à la meilleure.",
+    "answers": [
+      "Tests de personnalité obsolètes",
+      "Interviews uniquement basées sur les compétences",
+      "Absence totale d'entretiens structurés",
+      "Évaluations basées uniquement sur le CV",
+      "Questions pièges et stressantes durant l'entretien",
+      "Entretiens comportementaux basés sur des situations réelles",
+      "Exercices pratiques et études de cas",
+      "Feedback détaillé après chaque étape du processus",
+      "Panels d'entretiens avec différentes équipes",
+      "Évaluations multi-étapes incluant simulations et tests"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quelles stratégies de rétention de talents utiliser ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Absence de programme de mentorat",
+      "Peu d'opportunités de promotion interne",
+      "Pas de reconnaissance des performances exceptionnelles",
+      "Horaires de travail rigides et inflexibles",
+      "Absence de programme de formation continue",
+      "Évaluations régulières et feedback constructif",
+      "Programmes de bien-être et de gestion du stress",
+      "Opportunités de mobilité interne et de promotion",
+      "Reconnaissance régulière et programmes de récompenses",
+      "Flexibilité du travail et équilibre vie professionnelle-vie privée"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Quels moyens utiliser pour communiquer l’EVP aux candidats potentiels ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Annonces d'emploi génériques et sans attrait",
+      "Pas de section \"Carrières\" sur le site web de l'entreprise",
+      "Descriptions de poste longues et ennuyeuses",
+      "Aucune utilisation des réseaux sociaux pour le recrutement",
+      "Annonces d'emploi uniquement en texte brut",
+      "Vidéos témoignages d'employés sur le site carrière",
+      "Présence active sur LinkedIn et autres plateformes",
+      "Webinaires et événements en ligne pour présenter",
+      "Infographies et visuels attrayants pour les offres d'emploi",
+      "Témoignages d'employés et articles de blog sur la culture"
+    ],
+    "pdf": "OUTILS - Les techniques de sourcing.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur AND pour affiner une recherche ? De la manière la moins efficace à la plus efficace",
+    "answers": [
+      "Ne pas utiliser l'opérateur AND",
+      "Utiliser l'opérateur AND entre des termes qui n'ont aucun lien.",
+      "Placer l'opérateur AND entre des termes très similaires",
+      "Utiliser AND pour relier seulement deux termes dans une recherche complexe",
+      "Placer AND entre des termes clés mais sans ordre spécifique",
+      "Associer l'opérateur AND avec d'autres opérateurs, sans vérifier les résultats",
+      "Utiliser l'opérateur AND entre des termes principaux et secondaires pour filtrer les résultats",
+      "Combiner AND avec des guillemets pour des termes exacts",
+      "Créer des recherches complexes avec plusieurs opérateurs AND pour des résultats très ciblés",
+      "Vérifier les résultats obtenus et ajuster les termes reliés par AND pour optimiser la précision"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur OR pour élargir une recherche ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne pas utiliser l'opérateur OR",
+      "Utiliser OR entre des termes qui se contredisent",
+      "Placer OR entre des termes complètement différents sans lien",
+      "Utiliser OR pour relier deux synonymes",
+      "Utiliser OR pour combiner deux mots-clés trop larges",
+      "Placer OR entre des termes connexes mais avec une signification différente",
+      "Utiliser OR pour couvrir des variations orthographiques de termes de recherche",
+      "Combiner OR avec d'autres opérateurs pour explorer plusieurs concepts en une recherche",
+      "Utiliser OR pour inclure toutes les variantes possibles d'un terme",
+      "Créer une recherche flexible avec OR, couvrant des scénarios multiples tout en restant pertinent"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur NOT pour exclure des résultats indésirables ? De la pire technique à la meilleure technique",
+    "answers": [
+      "Ne pas utiliser l'opérateur NOT",
+      "Utiliser NOT pour exclure des termes qui ne sont pas pertinents pour la recherche",
+      "Placer NOT devant des termes non essentiels mais sans grande incidence sur les résultats",
+      "Utiliser NOT pour exclure des termes liés à des résultats rares",
+      "Exclure des termes trop spécifiques avec NOT, réduisant excessivement le nombre de résultats",
+      "Placer NOT devant des termes fréquemment associés à des résultats non désirés",
+      "Combiner NOT avec AND pour affiner une recherche en éliminant des résultats non pertinents",
+      "Utiliser NOT pour exclure des catégories entières de résultats",
+      "Employer NOT pour affiner des recherches complexes en éliminant des concepts entiers indésirables",
+      "Vérifier l'impact de NOT sur les résultats obtenus et ajuster pour éviter l'exclusion de résultats potentiellement utiles"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment combiner les opérateurs booléens pour optimiser une recherche complexe ? De la manière la moins efficace à la plus efficace",
+    "answers": [
+      "Ne pas utiliser d'opérateurs booléens",
+      "Utiliser uniquement un opérateur (AND, OR, NOT) sans lien",
+      "Utiliser plusieurs opérateurs booléens mais sans structuration",
+      "Combiner AND et OR sans parenthèses pour structurer la recherche",
+      "Utiliser AND et NOT ensemble sans clarifier les priorités",
+      "Combiner les opérateurs avec des parenthèses, mais de manière aléatoire",
+      "Structurer les recherches avec des parenthèses pour combiner plusieurs opérateurs efficacement",
+      "Employer AND, OR, et NOT avec des parenthèses pour créer des recherches complexes et ciblées",
+      "Tester différentes combinaisons d'opérateurs et de parenthèses pour optimiser les résultats",
+      "Analyser les résultats et ajuster les opérateurs pour obtenir la recherche la plus pertinente possible"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur ASTERISQUE (*) pour une recherche efficace ? De la manière la moins efficace à la plus efficace",
+    "answers": [
+      "Ne pas utiliser l'opérateur * dans la recherche",
+      "Placer * n'importe où dans un mot sans réfléchir à son utilité",
+      "Utiliser * seulement pour remplacer une lettre à la fin d’un mot",
+      "Placer * au milieu d'un mot sans tenir compte de la cohérence",
+      "Utiliser * pour remplacer une partie d'un mot sans explorer les différentes variantes possibles",
+      "Remplacer des préfixes communs avec * pour inclure",
+      "Utiliser * pour générer des résultats sur des termes liés par un préfixe commun",
+      "Remplacer une partie d'un terme complexe avec * pour couvrir plusieurs concepts liés",
+      "Employer * entre deux mots clés pour inclure toutes les combinaisons possibles",
+      "Combiner * avec d'autres opérateurs booléens pour une recherche très large mais ciblée, couvrant un maximum de variantes"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur GUILLEMETS (\") pour obtenir des résultats précis ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne jamais utiliser les guillemets pour une recherche",
+      "Utiliser des guillemets pour des termes génériques sans importance",
+      "Placer des guillemets autour d'un seul mot courant",
+      "Utiliser des guillemets pour des phrases courtes sans importance de l'ordre des mots",
+      "Insérer des guillemets autour d'une expression longue sans vérifier les résultats",
+      "Utiliser des guillemets pour des termes techniques exacts",
+      "Placer des guillemets autour de phrases spécifiques pour obtenir des résultats précis",
+      "Combiner les guillemets avec des opérateurs AND/OR pour cibler des phrases précises avec des variations",
+      "Utiliser des guillemets autour de noms propres ou expressions spécifiques pour garantir l'ordre exact des mots",
+      "Employer des guillemets pour des expressions exactes dans des requêtes longues pour obtenir des résultats ultra-précis"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur INURL pour cibler des informations dans l’URL d'une page web ? De la pire idée à la meilleure idée",
+    "answers": [
+      "Ne jamais utiliser l'opérateur INURL",
+      "Utiliser INURL avec des termes sans rapport avec l'URL ciblée",
+      "Placer INURL avec des mots courants qui pourraient dans n’importe quel URL",
+      "Utiliser INURL pour rechercher un mot générique dans des URLs, menant à des résultats non pertinents",
+      "Placer INURL avec un terme spécifique mais sans contexte",
+      "Utiliser INURL pour cibler des pages avec un terme clé unique",
+      "Combiner INURL avec d'autres opérateurs pour affiner la recherche dans des URLs spécifiques",
+      "Utiliser INURL pour identifier des sections ou catégories spécifiques d'un site web",
+      "Employer INURL avec plusieurs termes pour cibler des sous-pages pertinentes d'un site",
+      "Tester INURL avec des termes stratégiques pour localiser exactement la page web recherchée"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment utiliser l'opérateur INTITLE pour trouver des mots clés dans les titres de pages web ? De la pire technique à la meilleure technique",
+    "answers": [
+      "Ne jamais utiliser l'opérateur INTITLE",
+      "Utiliser INTITLE avec des termes communs qui apparaissent dans de nombreux titres",
+      "Placer INTITLE avec des mots trop courts pour être significatifs",
+      "Utiliser INTITLE avec des termes non pertinents pour le contenu recherché",
+      "Employer INTITLE pour cibler un mot clé unique mais générique",
+      "Combiner INTITLE avec d'autres opérateurs pour filtrer les titres",
+      "Utiliser INTITLE avec des expressions clés pour cibler des titres",
+      "Employer INTITLE pour trouver des articles ou pages avec des termes précis",
+      "Tester INTITLE avec des variations de mots clés pour affiner les résultats",
+      "Utiliser INTITLE pour localiser exactement les pages ayant un titre parfaitement pertinent à la recherche"
+    ],
+    "pdf": "OUTILS - Opérateurs  boléensOUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Quelles méthodes pour valoriser une marque employeur sur LinkedIn ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Changer la photo de couverture de la page entreprise",
+      "Ajouter des emojis dans les publications",
+      "Partager des photos de l’équipe au travail",
+      "Partager des articles sur l’industrie",
+      "Afficher les offres d’emploi régulièrement",
+      "Mettre en avant des témoignages d’employés sur leur profil",
+      "Partager des initiatives RSE (Responsabilité Sociale des entreprises)",
+      "Publier des vidéos immersives sur la culture d’entreprise",
+      "Mettre en avant des projets d’équipe ou des innovations",
+      "Organiser des webinaires ou événements pour partager"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment éviter d'être ignoré par un candidat que vous contactez sur LinkedIn ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Envoyer un message générique et non personnalisé",
+      "Envoyer plusieurs demandes de connexion sans message",
+      "Utiliser un langage trop formel et distant",
+      "Envoyer un message court sans valeur ajoutée",
+      "Relancer le candidat avec un message de suivi sans apporter de valeur ajoutée",
+      "Personnaliser le message en mentionnant des détails",
+      "Mentionner une connexion commune ou un projet pertinent",
+      "Proposer un court appel ou une réunion pour discuter de ses aspirations",
+      "Offrir des informations détaillées sur le poste, l'entreprise,",
+      "Partager un contenu de valeur en lien avec son expertise"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Quelles techniques utiliser pour construire un réseau solide sur LinkedIn en tant que recruteur ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Accepter toutes les demandes de connexion sans discernement",
+      "Envoyer des demandes de connexion en masse sans message",
+      "Suivre uniquement des entreprises ou leaders de votre secteur",
+      "Liker et commenter occasionnellement des posts dans votre réseau",
+      "Envoyer des messages personnalisés lors des connexions",
+      "Participer à des discussions dans des groupes LinkedIn",
+      "Partager régulièrement des offres d'emploi",
+      "Poster des articles ou des contenus pertinents sur un sujet technique",
+      "Organiser ou participer à des webinaires et événements en lien avec la thématique technique",
+      "Cultiver des relations en maintenant des échanges réguliers"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment gérer un candidat LinkedIn intéressé par une offre, mais qui devient soudainement inactif ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Ne rien faire et attendre qu'il revienne vers vous",
+      "Envoyer un message générique de suivi",
+      "Continuer à envoyer des messages sans changement de stratégie",
+      "Liker ou commenter ses publications pour attirer son attention",
+      "Demander à un collègue ou un manager de le contacter à votre place",
+      "Relancer le candidat en proposant de nouveaux détails sur le nouveau poste ou l’entreprise",
+      "Envoyer un message personnalisé pour comprendre la situation du candidat",
+      "Faire preuve de flexibilité en adaptant les délais ou les conditions de l’offre",
+      "Proposer un appel ou une rencontre pour discuter de ses préoccuaptions",
+      "Envoyer un message bienveillant laissant la porte ouverte pour l’avenir"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment animer un vivier de talents sur LinkedIn ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Ne jamais interagir avec les candidats dans le vivier et attendre qu’ils prennent contact d’eux-mêmes",
+      "Envoyer un seul message générique à tout le vivier une fois par an",
+      "Ne contacter que les candidats que vous n’avez pas relancés depuis plus de 6 mois",
+      "Envoyer des offres d’emploi par e-mail à chaque fois que vous avez un nouveau poste à pourvoir",
+      "Inviter les candidats à des webinaires ou événements virtuels",
+      "Partager régulièrement des articles et des conseils sur LinkedIn concernant l’évolution de votre secteur",
+      "Créer un groupe LinkedIn dédié à votre vivier de talents pour échanger sur des sujets de l’industrie",
+      "Envoyer des messages personnalisés aux candidats qui ont accepté des offres ailleurs pour maintenir le contact",
+      "Segmenter votre vivier par secteurs et envoyer des contenus spécifiques à chaque groupe de candidats",
+      "Utiliser LinkedIn Live pour animer des sessions en direct sur des thématiques importantes pour votre secteur"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Quelles actions permettent de développer efficacement votre réseau sur LinkedIn ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Envoyer des invitations de connexion sans message",
+      "Ne jamais interagir avec vos contacts après avoir accepté une invitation",
+      "Partager des posts uniquement sur des sujets personnels",
+      "Envoyer des invitations uniquement à des personnes que vous connaissez déjà personnellement",
+      "Publier des articles ou des contenus en lien avec votre expertise",
+      "Solliciter des recommandations auprès de vos contacts",
+      "Ajouter des connexions après des événements (en ligne ou physiques) et envoyer un message de suivi personnalisé",
+      "Publier régulièrement du contenu pertinent et engageant pour susciter des discussions",
+      "Envoyer des messages personnalisés à chaque nouvelle connexion pour établir une relation"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Comment optimiser votre profil LinkedIn pour attirer l’attention des recruteurs ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Ne pas mettre de photo de profil",
+      "Utiliser une photo de profil informelle ou non professionnelle",
+      "Rédiger un résumé générique sans mentionner vos réalisations spécifiques",
+      "Ne pas remplir la section des compétences",
+      "Lister vos emplois précédents sans décrire vos responsabilités",
+      "Obtenir des recommandations d’anciens collègues ou employeurs",
+      "Utiliser des mots-clés pertinents dans votre titre et votre résumé pour augmenter la visibilité dans les recherches LinkedIn",
+      "Personnaliser votre URL LinkedIn pour y inclure votre nom",
+      "Ajouter des exemples de réalisations sous forme de médias (vidéos, présentations, articles)",
+      "Créer un résumé percutant qui présente votre parcours, vos réalisations et vos objectifs professionnels"
+    ],
+    "pdf": "OUTILS - Linkedin.pdf"
+  },
+  {
+    "question": "Quelle technique utiliser pour sourcer un développeur en freelance via l'open web ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Chercher sur des sites de freelancing généralistes sans filtrage",
+      "Utiliser des groupes Facebook génériques pour poster une demande",
+      "Rechercher des profils sur LinkedIn sans critères spécifiques",
+      "Explorer des forums de discussion généralistes",
+      "Consulter des portfolios personnels de développeurs trouvés",
+      "Sourcer sur GitHub sans engager avec les développeurs",
+      "Utiliser des outils de recherche de talents spécialisés (ex. GitHub Jobs)",
+      "Participer à des hackathons en ligne",
+      "Rejoindre des communautés en ligne ou des groupes",
+      "Contacter directement des développeurs via leurs contributions sur GitHub"
+    ],
+    "pdf": "OUTILS - Open Web.pdf"
+  },
+  {
+    "question": "Quel canal open web utiliser pour contacter un candidat passif ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Mettre des commentaire sur un article de blog",
+      "Publier sur un groupe Facebook",
+      "Envoyer des message direct sur Twitter",
+      "Envoyer des emails génériques trouvés sur un profil public",
+      "Poster des commentaires sur un post LinkedIn",
+      "Contacter des profils via un forum généraliste",
+      "Faire recherches sur LinkedIn avec des InMails",
+      "Envoyer des messages personnalisés sur LinkedIn",
+      "Faire des approches via des communautés en ligne",
+      "Mettre en place des webinaires ou événements virtuels"
+    ],
+    "pdf": "OUTILS - Open Web.pdf"
+  },
+  {
+    "question": "Comment convaincre un candidat passif via l'open web ? De l’idée la moins pertinente à la plus pertinente",
+    "answers": [
+      "Publier une annonce d'emploi générique sur un blog",
+      "Envoyer un message standardisé par email",
+      "Commenter sur un forum sans engagement direct",
+      "Proposer un entretien de manière vague sur LinkedIn",
+      "Partager des contenus intéressants sur les réseaux sociaux",
+      "Organiser un événement informel (ex. café virtuel)",
+      "Utiliser des témoignages d'employés sur les réseaux sociaux",
+      "Créer un contenu engageant sur votre entreprise (vidéos,",
+      "Envoyer un message personnalisé via LinkedIn",
+      "Utiliser un programme de cooptation ou d'incitation pour référencer le candidat"
+    ],
+    "pdf": "OUTILS - Open Web.pdf"
+  },
+  {
+    "question": "Quel serait le plus grand défi dans l’utilisation de l'open web pour le sourcing ? Du plus petit défi au plus grand défi",
+    "answers": [
+      "Trop d'informations à trier",
+      "Difficulté à évaluer la qualité des profils",
+      "Manque de temps pour la recherche",
+      "Établir un contact initial avec des candidats passifs",
+      "Risques de confidentialité et de sécurité des données",
+      "Interpréter les compétences techniques des candidats",
+      "Concurrence accrue pour les talents",
+      "Naviguer dans des communautés spécialisées",
+      "Évaluer la motivation des candidats passifs",
+      "Gestion de la perception de l'entreprise"
+    ],
+    "pdf": "OUTILS - Open Web.pdf"
+  },
+  {
+    "question": "Quel canal open web utiliseriez-vous pour contacter un candidat passif ? Du canal web le moins innovant au plus innovant ?",
+    "answers": [
+      "Envoyer un e-mail via l’adresse professionnelle trouvée sur son profil public",
+      "Envoyer un message privé sur LinkedIn sans personnalisation",
+      "Contacter via un message direct sur Twitter ou une autre plateforme sociale publique",
+      "Envoyer une recommandation ou invitation à rejoindre un groupe sur Facebook dédié à son secteur d’activité",
+      "Participer à des discussions sur des forums spécialisés ou des communautés comme Stack Overflow, puis contacter le candidat",
+      "Utiliser l'IA pour analyser ses contributions sur GitHub et personnaliser un message en fonction de ses projets récents",
+      "Envoyer une vidéo personnalisée via un réseau social où le candidat est actif, en mentionnant ses réalisations spécifiques",
+      "Utiliser une IA pour créer une analyse de marché ou une offre de poste personnalisée et la partager via une plateforme de niche où le candidat est actif",
+      "Proposer un échange informel sur Clubhouse ou une autre plateforme de discussion audio autour de son expertise",
+      "Organiser un événement virtuel ciblé avec d’autres experts de son domaine et l’inviter à rejoindre le panel d’intervenants"
+    ],
+    "pdf": "OUTILS - Open Web.pdf"
+  },
+  {
+    "question": "Quel biais influence le plus inconsciemment nos décisions en entretien ? Du plus subtil au plus flagrant",
+    "answers": [
+      "Effet de halo",
+      "Biais de confirmation",
+      "Effet de contraste",
+      "Effet de récence",
+      "Biais de similarité",
+      "Effet de primauté",
+      "Biais de genre",
+      "Biais d’âge",
+      "Effet de notoriété",
+      "Biais d’attribution"
+    ],
+    "pdf": "../../assets/IA.pdf"
+  },
+  {
+    "question": "Quelle réaction face à un candidat est le plus révélatrice d’un biais ? De la plus fréquente à la plus surprenante",
+    "answers": [
+      "Préférer un candidat qui a le même parcours que soi",
+      "Se sentir à l’aise sans raison rationnelle",
+      "Interpréter les silences comme un manque de motivation",
+      "Raccourcir l’entretien avec un profil 'sûr'",
+      "Justifier une décision sans preuve",
+      "Complimenter spontanément un détail non pro",
+      "Utiliser les mêmes blagues à chaque entretien",
+      "Être influencé par une école connue",
+      "Se fier au feeling",
+      "Se méfier d’un candidat trop affirmatif"
+    ]},
+  {
+    "question": "Quelle méthode d’entretien est la plus efficace pour évaluer les compétences ? Du plus improvisé au plus structuré",
+    "answers": [
+      "Entretien libre sans guide",
+      "Entretien semi-directif sans préparation",
+      "Grille non partagée",
+      "Questions posées au hasard",
+      "Entretien basé sur le CV uniquement",
+      "Échange sur les valeurs sans lien au poste",
+      "Grille commune avec critères flous",
+      "Mise en situation sans évaluation",
+      "Entretien structuré avec grille claire",
+      "Simulation avec observation collective"
+    ]
+  },
+  {
+    "question": "Quelle pratique rend un entretien moins fiable ? De la plus tolérable à la plus critique",
+    "answers": [
+      "Changer les questions selon le profil",
+      "Donner son avis en milieu d’entretien",
+      "Ne pas noter les réponses",
+      "Oublier de poser les mêmes questions à tous",
+      "Se baser sur l’intuition",
+      "Ne pas suivre de trame",
+      "Improviser totalement",
+      "Faire des questions pièges",
+      "Manquer de neutralité",
+      "Faire un monologue RH"
+    ]
+  },
+  {
+    "question": "Quelle erreur d’évaluation est la plus fréquente sur les soft skills ? De la plus banale à la plus évitable",
+    "answers": [
+      "Confondre soft skill et trait de personnalité",
+      "Évaluer hors contexte",
+      "Oublier de poser des questions comportementales",
+      "Se baser uniquement sur le discours",
+      "Absence de grille",
+      "Ne pas confronter à un retour terrain",
+      "Ne pas observer le candidat en action",
+      "Ne pas définir les attendus",
+      "Éviter les mises en situation",
+      "Ne pas valider collectivement"
+    ]
+  },
+  {
+    "question": "Quelle approche est la plus efficace pour évaluer une soft skill comme l’adaptabilité ? De la plus approximative à la plus fiable",
+    "answers": [
+      "Évaluer à l’intuition",
+      "Se fier au ressenti",
+      "Question floue sur l’adaptabilité",
+      "Discussion informelle",
+      "Auto-évaluation",
+      "Retour d’expérience sans mise en situation",
+      "Jeu de rôle sans critères",
+      "Mise en situation réelle",
+      "Observation sur le terrain",
+      "Feedback croisé après mission"
+    ]
+  },
+  {
+    "question": "Quelle mise en situation est la plus pertinente pour observer les soft skills ? De la plus artificielle à la plus révélatrice",
+    "answers": [
+      "Quizz de personnalité",
+      "Échange sur des hobbies",
+      "Cas pratique hors contexte",
+      "Question sur une situation passée",
+      "Simulation d’un conflit client",
+      "Jeu de rôle collaboratif",
+      "Feedback à chaud d’un pair",
+      "Atelier de co-construction",
+      "Mise en situation dans un projet",
+      "Mission réelle courte observée"
+    ]
+  },
+  {
+    "question": "Quelle erreur est la plus courante dans l’évaluation des hard skills ? De la plus répandue à la plus grave",
+    "answers": [
+      "Évaluer sans grille",
+      "Ne pas donner de consignes",
+      "Ne pas faire de retour",
+      "Tester une techno hors poste",
+      "Évaluer la rapidité seulement",
+      "Faire un test sans explication",
+      "Se baser sur des critères subjectifs",
+      "Oublier le raisonnement",
+      "Ne pas vérifier la reproductibilité",
+      "Ne pas tester du tout"
+    ]
+  },
+  {
+    "question": "Quelle méthode est la plus adaptée pour vérifier une expertise technique ? De la plus légère à la plus exigeante",
+    "answers": [
+      "Lecture d’un CV technique",
+      "QCM en ligne automatisé",
+      "Code review d’un projet passé",
+      "Pair programming",
+      "Exercice maison avec rendu",
+      "Simulation d’une vraie tâche",
+      "Débrief avec expert",
+      "Observation en situation",
+      "Projet test en équipe",
+      "Cas réel à résoudre avec méthode"
+    ]
+  }
+]
+
+

@@ -22,7 +22,7 @@ function Card({ image, title, alt = "", color = "#FB8500", backData = null, isFl
       onClick={handleFlip}
     >
       <div className={`flip-card-inner ${currentFlipped ? 'flipped' : ''}`}>
-        {/* Face avant */}
+        {/* Face avant - Question */}
         <div className="flip-card-front">
           <div className="rounded-3xl border-7 relative overflow-hidden h-full" style={{ borderColor: color }}>
             {/* SVG Banner positionné en haut */}
@@ -47,12 +47,25 @@ function Card({ image, title, alt = "", color = "#FB8500", backData = null, isFl
               </div>
             </div>
 
-            {/* Image de la carte */}
-            <img className='w-68 h-full object-cover' src={image} alt={alt} />
+            {/* Contenu de la carte - Question ou Image */}
+            {backData ? (
+              <div className="flex flex-col justify-center items-center h-full p-6 pt-16 bg-white">
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-4" style={{ color: color }}>
+                    {backData.question}
+                  </h3>
+                  <p className="text-lg text-gray-600 italic">
+                    {backData.subtitle}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <img className='w-68 h-full object-cover' src={image} alt={alt} />
+            )}
           </div>
         </div>
 
-        {/* Face arrière */}
+        {/* Face arrière - Réponse */}
         {backData && (
           <div className="flip-card-back">
             <div 
@@ -62,7 +75,7 @@ function Card({ image, title, alt = "", color = "#FB8500", backData = null, isFl
               <div className="bg-white rounded-2xl p-4 h-full flex flex-col" style={{ margin: '6px' }}>
                 <div className="text-center mb-4">
                   <h3 className="text-lg font-bold mb-2" style={{ color: color }}>
-                    {backData.question}
+                    Réponse
                   </h3>
                   <p className="text-md text-gray-600 italic">
                     {backData.subtitle}
@@ -71,7 +84,7 @@ function Card({ image, title, alt = "", color = "#FB8500", backData = null, isFl
                 
                 <div className="flex-1 overflow-y-auto">
                   <ol className="space-y-1 text-left">
-                    {backData.items.map((item, index) => (
+                    {backData.answers.map((item, index) => (
                       <li key={index} className="text-md text-gray-800 leading-relaxed">
                         <span className="font-semibold">{index + 1}.</span> {item}
                       </li>
@@ -79,8 +92,8 @@ function Card({ image, title, alt = "", color = "#FB8500", backData = null, isFl
                   </ol>
                 </div>
                 
-                <div className=" flex justify-end">
-                  <img className=' w-14 h-8' src={MiniLogo} alt="" />
+                <div className="flex justify-end">
+                  <img className='w-14 h-8' src={MiniLogo} alt="" />
                 </div>
               </div>
             </div>
