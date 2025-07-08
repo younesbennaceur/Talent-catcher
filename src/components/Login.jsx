@@ -62,7 +62,8 @@ function Login({ onClose, onValidate }) {
       setError('');
 
       try {
-        const response = await fetch('http://localhost:4000/login', {
+        // URL mise à jour pour pointer vers votre serveur Render
+        const response = await fetch('https://talent-catcher.onrender.com/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
