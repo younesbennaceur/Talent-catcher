@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import Card from '../components/Card'
-import CardDetailPage from '../components/CardDetailPage'
-import GameStart from '../assets/GameStart.png'
-import Logo from '../assets/Logo.png'
-import Rules from '../assets/Rules.png'
-import Quitter from '../assets/Quitter.png'
-import Pause from '../assets/Pause.png'
-import Play from '../assets/Play.png'
-import IA from '../assets/IA.png'
-import ME from '../assets/ME.png'
-import SK from '../assets/SK.png'
-import card from '../assets/Card.png'
+import React, { useState, useEffect } from 'react';
+import Card from '../components/Card';
+import CardDetailPage from '../components/CardDetailPage';
+import GameStart from '../assets/GameStart.png';
+import Logo from '../assets/Logo.png';
+import Rules from '../assets/Rules.png';
+import Quitter from '../assets/Quitter.png';
+import Pause from '../assets/Pause.png';
+import Play from '../assets/Play.png';
+import IA from '../assets/IA.png';
+import ME from '../assets/ME.png';
+import SK from '../assets/SK.png';
+import card from '../assets/Card.png';
 
-// Import des fichiers JSON
-import se from '../data/se.json'
-import ia from '../data/ia.json'
-import me from '../data/me.json'
-import skillsData from '../data/sk.json'
+import se from '../data/se.json';
+import ia from '../data/ia.json';
+import me from '../data/me.json';
+import skillsData from '../data/sk.json';
 
-import Regle from '../components/Regle'
-import Login from '../components/Login'
-import SignUp from '../components/SignUp'
+import Regle from '../components/Regle';
+import Login from '../components/Login';
+import SignUp from '../components/SignUp';
+import Autoevo from '../components/Autoevo';
 
 function getRandomBackData(backDataArray) {
   const randomIndex = Math.floor(Math.random() * backDataArray.length);
@@ -36,8 +36,8 @@ function Home() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [playedCards, setPlayedCards] = useState([]);
   const [cardData, setCardData] = useState([]);
+  const [showAutoEvaluation, setShowAutoEvaluation] = useState(false);
 
-  // Initialiser les données des cartes avec les fichiers JSON
   useEffect(() => {
     const initialCardData = [
       {
@@ -73,16 +73,11 @@ function Home() {
         backData: skillsData,
       }
     ];
-    
     setCardData(initialCardData);
   }, []);
 
   const togglePause = () => setIsPaused(!isPaused);
-
-  // Gestion du bouton "Se connecter" dans l'en-tête
   const handleHeaderLogin = () => setShowLogin(true);
-
-  // Gestion du bouton "Lancer la partie" pour les utilisateurs non connectés
   const handleLaunchGame = () => setShowLogin(true);
 
   const handleLoginValidate = (tokenOrCode) => {
@@ -96,6 +91,7 @@ function Home() {
     setIsPaused(false);
     setSelectedCard(null);
     setPlayedCards([]);
+    setShowAutoEvaluation(false);
   };
 
   const handleSwitchToRegistration = () => {
@@ -179,56 +175,63 @@ function Home() {
             : "Prêt·e pour une partie ?"}
         </h1>
 
-        <div className="flex flex-row justify-between">
-          {cardData.map((cardInfo) => (
-            <div
-              key={cardInfo.id}
-              onClick={() => handleCardClick(cardInfo)}
-              className="cursor-pointer"
-            >
-              <Card
-                image={cardInfo.image}
-                title={cardInfo.title}
-                alt={cardInfo.alt}
-                color={cardInfo.color}
-                backData={null}
-                isFlippable={false}
-              />
-            </div>
-          ))}
-        </div>
+        {/* Cartes (si pas en auto-évaluation) */}
+        {!showAutoEvaluation && (
+          <div className="flex flex-row justify-between">
+            {cardData.map((cardInfo) => (
+              <div
+                key={cardInfo.id}
+                onClick={() => handleCardClick(cardInfo)}
+                className="cursor-pointer"
+              >
+                <Card
+                  image={cardInfo.image}
+                  title={cardInfo.title}
+                  alt={cardInfo.alt}
+                  color={cardInfo.color}
+                  backData={null}
+                  isFlippable={false}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
+        {/* Boutons */}
         {!token ? (
-  <div className='flex justify-center gap-4'>
-    <button
-      onClick={handleLaunchGame}
-      className="text-2xl hover:bg-transparent bg-[#023047] border-4 hover:border-[#023047] border-white text-white hover:text-[#023047] font-semibold py-2 px-12 rounded-xl"
-    >
-      Lancer la partie
-    </button>
-    <button
-      onClick={handleLaunchGame}
-      className="text-2xl hover:bg-[#023047] border-4 border-[#023047] hover:border-white hover:text-white text-[#023047] font-semibold py-2 px-12 rounded-xl"
-    >
-      Business Case
-    </button>
-  </div>
-) : (
-  <div className='flex justify-center'>
-    <button
-    
-      className="text-2xl hover:bg-transparent bg-[#023047] border-4 hover:border-[#023047] border-white text-white hover:text-[#023047] font-semibold py-2 px-12 rounded-xl"
-    >
-      Auto Évaluation
-    </button>
-  </div>
-)}
+          <div className='flex justify-center gap-4'>
+            <button
+              onClick={handleLaunchGame}
+              className="text-2xl hover:bg-transparent bg-[#023047] border-4 hover:border-[#023047] border-white text-white hover:text-[#023047] font-semibold py-2 px-12 rounded-xl"
+            >
+              Lancer la partie
+            </button>
+            <button
+              onClick={handleLaunchGame}
+              className="text-2xl hover:bg-[#023047] border-4 border-[#023047] hover:border-white hover:text-white text-[#023047] font-semibold py-2 px-12 rounded-xl"
+            >
+              Business Case
+            </button>
+          </div>
+        ) : (
+          <div className='flex justify-center'>
+            <button
+              onClick={() => setShowAutoEvaluation(true)}
+              className="text-2xl hover:bg-transparent bg-[#023047] border-4 hover:border-[#023047] border-white text-white hover:text-[#023047] font-semibold py-2 px-12 rounded-xl"
+            >
+              Auto Évaluation
+            </button>
+          </div>
+        )}
 
+        {/* Composant Auto Évaluation */}
+        {showAutoEvaluation && (
+          <Autoevo onValidate={() => setShowAutoEvaluation(false)} />
+        )}
       </div>
 
-      {/* Popups conditionnels */}
+      {/* Popups */}
       {showRegle && <Regle onClose={() => setShowRegle(false)} />}
-
       {showLogin && (
         <Login
           onClose={handleCloseAuth}
@@ -236,14 +239,12 @@ function Home() {
           onRegisterSwitch={handleSwitchToRegistration}
         />
       )}
-
       {showRegistration && (
         <SignUp
           onClose={handleCloseAuth}
           onLoginSwitch={handleSwitchToLogin}
         />
       )}
-
       {selectedCard && (
         <CardDetailPage
           cardData={selectedCard}
