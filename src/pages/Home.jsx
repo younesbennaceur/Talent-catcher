@@ -18,9 +18,9 @@ import ia from '../data/ia.json'
 import me from '../data/me.json'
 import skillsData from '../data/sk.json'
 
-
 import Regle from '../components/Regle'
-import LoginPopup from '../components/Login'
+import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 
 function getRandomBackData(backDataArray) {
   const randomIndex = Math.floor(Math.random() * backDataArray.length);
@@ -32,6 +32,7 @@ function Home() {
   const [isPaused, setIsPaused] = useState(false);
   const [showRegle, setShowRegle] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showRegistration, setShowRegistration] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [playedCards, setPlayedCards] = useState([]);
   const [cardData, setCardData] = useState([]);
@@ -63,8 +64,6 @@ function Home() {
         color: '#FFB703',
         backData: me,
       },
-
-      
       {
         id: 'skills',
         image: SK,
@@ -73,7 +72,6 @@ function Home() {
         color: '#8ECAE6',
         backData: skillsData,
       }
-
     ];
     
     setCardData(initialCardData);
@@ -81,10 +79,14 @@ function Home() {
 
   const togglePause = () => setIsPaused(!isPaused);
 
+  // Gestion du bouton "Se connecter" dans l'en-tête
+  const handleHeaderLogin = () => setShowLogin(true);
+
+  // Gestion du bouton "Lancer la partie" pour les utilisateurs non connectés
   const handleLaunchGame = () => setShowLogin(true);
 
-  const handleLoginValidate = (code) => {
-    console.log("Code saisi:", code);
+  const handleLoginValidate = (tokenOrCode) => {
+    console.log("Authentification réussie:", tokenOrCode);
     setToken(true);
     setShowLogin(false);
   };
@@ -94,6 +96,21 @@ function Home() {
     setIsPaused(false);
     setSelectedCard(null);
     setPlayedCards([]);
+  };
+
+  const handleSwitchToRegistration = () => {
+    setShowLogin(false);
+    setShowRegistration(true);
+  };
+
+  const handleSwitchToLogin = () => {
+    setShowRegistration(false);
+    setShowLogin(true);
+  };
+
+  const handleCloseAuth = () => {
+    setShowLogin(false);
+    setShowRegistration(false);
   };
 
   const handleCardClick = (cardInfo) => {
@@ -125,7 +142,7 @@ function Home() {
               <img
                 className="w-14 h-14 cursor-pointer"
                 src={isPaused ? Play : Pause}
-                alt={isPaused ? 'Play' : 'Pause'}
+                alt={isPaused ? "Play" : "Pause"}
                 onClick={togglePause}
               />
               <img
@@ -136,12 +153,20 @@ function Home() {
               />
             </>
           ) : (
-            <img
-              className="w-14 h-14 cursor-pointer"
-              src={Rules}
-              alt="Rules"
-              onClick={() => setShowRegle(true)}
-            />
+            <>
+              <img
+                className="w-14 h-14 cursor-pointer"
+                src={Rules}
+                alt="Rules"
+                onClick={() => setShowRegle(true)}
+              />
+              <button
+                onClick={handleHeaderLogin}
+                className="bg-[#023045] border-4 border-white text-white px-6 py-2 rounded-full text-lg font-medium hover:bg-[#021245] transition-colors"
+              >
+                Se connecter
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -149,7 +174,9 @@ function Home() {
       {/* Corps principal */}
       <div className="flex flex-col gap-8">
         <h1 className="text-center text-5xl">
-          {token ? "Laissez les dés choisir l'univers à explorer !" : "Prêt·e pour une partie ?"}
+          {token
+            ? "Laissez les dés choisir l'univers à explorer !"
+            : "Prêt·e pour une partie ?"}
         </h1>
 
         <div className="flex flex-row justify-between">
@@ -159,11 +186,11 @@ function Home() {
               onClick={() => handleCardClick(cardInfo)}
               className="cursor-pointer"
             >
-              <Card 
-                image={cardInfo.image} 
-                title={cardInfo.title} 
-                alt={cardInfo.alt} 
-                color={cardInfo.color} 
+              <Card
+                image={cardInfo.image}
+                title={cardInfo.title}
+                alt={cardInfo.alt}
+                color={cardInfo.color}
                 backData={null}
                 isFlippable={false}
               />
@@ -171,22 +198,55 @@ function Home() {
           ))}
         </div>
 
-        {!token && (
-          <button
-            onClick={handleLaunchGame}
-            className="block mx-auto text-2xl hover:bg-[#023047] border-4 border-[#023047] hover:border-white hover:text-white text-[#023047] font-semibold py-2 px-12 rounded-xl"
-          >
-            Lancer la partie
-          </button>
-        )}
+        {!token ? (
+  <div className='flex justify-center gap-4'>
+    <button
+      onClick={handleLaunchGame}
+      className="text-2xl hover:bg-transparent bg-[#023047] border-4 hover:border-[#023047] border-white text-white hover:text-[#023047] font-semibold py-2 px-12 rounded-xl"
+    >
+      Lancer la partie
+    </button>
+    <button
+      onClick={handleLaunchGame}
+      className="text-2xl hover:bg-[#023047] border-4 border-[#023047] hover:border-white hover:text-white text-[#023047] font-semibold py-2 px-12 rounded-xl"
+    >
+      Business Case
+    </button>
+  </div>
+) : (
+  <div className='flex justify-center'>
+    <button
+    
+      className="text-2xl hover:bg-transparent bg-[#023047] border-4 hover:border-[#023047] border-white text-white hover:text-[#023047] font-semibold py-2 px-12 rounded-xl"
+    >
+      Auto Évaluation
+    </button>
+  </div>
+)}
+
       </div>
 
       {/* Popups conditionnels */}
       {showRegle && <Regle onClose={() => setShowRegle(false)} />}
-      {showLogin && <LoginPopup onClose={() => setShowLogin(false)} onValidate={handleLoginValidate} />}
+
+      {showLogin && (
+        <Login
+          onClose={handleCloseAuth}
+          onValidate={handleLoginValidate}
+          onRegisterSwitch={handleSwitchToRegistration}
+        />
+      )}
+
+      {showRegistration && (
+        <SignUp
+          onClose={handleCloseAuth}
+          onLoginSwitch={handleSwitchToLogin}
+        />
+      )}
+
       {selectedCard && (
-        <CardDetailPage 
-          cardData={selectedCard} 
+        <CardDetailPage
+          cardData={selectedCard}
           onClose={handleCloseCardDetail}
           isPaused={isPaused}
           onTogglePause={togglePause}

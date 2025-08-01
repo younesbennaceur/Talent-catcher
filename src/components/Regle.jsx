@@ -12,7 +12,7 @@ function Regle({ onClose }) {
           className="absolute top-4 right-4 text-gray-700 hover:text-gray-900 font-bold text-2xl"
           aria-label="Close modal"
         >
-          ×
+          
         </button>
 
         {/* Titre */}

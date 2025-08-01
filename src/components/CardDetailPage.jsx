@@ -10,7 +10,7 @@ import Play from '../assets/Play.png'
 function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [timer, setTimer] = useState(180); // 3 minutes = 180 secondes
+  const [timer, setTimer] = useState(240); // 3 minutes = 180 secondes
 
   useEffect(() => {
     if (isPaused) return;
