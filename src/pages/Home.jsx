@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { onAuthStateChanged, reload } from 'firebase/auth';
+import { auth } from '../lib/firebase';
+import useGoogleAuth from '../hooks/useGoogleAuth';
 import Card from '../components/Card';
 import CardDetailPage from '../components/CardDetailPage';
 import GameStart from '../assets/GameStart.png';
@@ -28,7 +31,6 @@ function getRandomBackData(backDataArray) {
 }
 
 function Home() {
-  const [token, setToken] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [showRegle, setShowRegle] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -37,6 +39,64 @@ function Home() {
   const [playedCards, setPlayedCards] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showAutoEvaluation, setShowAutoEvaluation] = useState(false);
+
+  const [token, setToken] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+
+  const { logout } = useGoogleAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setToken(true);
+        setUser(firebaseUser);
+        setIsEmailVerified(firebaseUser.emailVerified);
+      } else {
+        setToken(false);
+        setUser(null);
+        setIsEmailVerified(false);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // 👇 Ajout ici : vérification toutes les 3 sec si email non vérifié
+  useEffect(() => {
+    let intervalId;
+    if (token && user && !isEmailVerified) {
+      const checkEmailVerification = async () => {
+        try {
+          await reload(auth.currentUser);
+          if (auth.currentUser.emailVerified) {
+            setIsEmailVerified(true);
+          }
+        } catch (error) {
+          console.error("Erreur lors de la vérification :", error);
+        }
+      };
+      intervalId = setInterval(checkEmailVerification, 3000);
+      return () => clearInterval(intervalId);
+    }
+  }, [token, user, isEmailVerified]);
+
+  const handleLoginValidate = (userOrToken) => {
+    setToken(true);
+    setUser(userOrToken);
+    setIsEmailVerified(userOrToken.emailVerified || true);
+    setShowLogin(false);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    setToken(false);
+    setUser(null);
+    setIsEmailVerified(false);
+    setIsPaused(false);
+    setSelectedCard(null);
+    setPlayedCards([]);
+    setShowAutoEvaluation(false);
+  };
 
   useEffect(() => {
     const initialCardData = [
@@ -79,43 +139,23 @@ function Home() {
   const togglePause = () => setIsPaused(!isPaused);
   const handleHeaderLogin = () => setShowLogin(true);
   const handleLaunchGame = () => setShowLogin(true);
-
-  const handleLoginValidate = (tokenOrCode) => {
-    console.log("Authentification réussie:", tokenOrCode);
-    setToken(true);
-    setShowLogin(false);
-  };
-
-  const handleLogout = () => {
-    setToken(false);
-    setIsPaused(false);
-    setSelectedCard(null);
-    setPlayedCards([]);
-    setShowAutoEvaluation(false);
-  };
-
   const handleSwitchToRegistration = () => {
     setShowLogin(false);
     setShowRegistration(true);
   };
-
   const handleSwitchToLogin = () => {
     setShowRegistration(false);
     setShowLogin(true);
   };
-
   const handleCloseAuth = () => {
     setShowLogin(false);
     setShowRegistration(false);
   };
 
   const handleCardClick = (cardInfo) => {
-    if (token) {
+    if (token && isEmailVerified) {
       const randomBack = getRandomBackData(cardInfo.backData);
-      const cardWithRandomBack = {
-        ...cardInfo,
-        backData: randomBack,
-      };
+      const cardWithRandomBack = { ...cardInfo, backData: randomBack };
       setSelectedCard(cardWithRandomBack);
     }
   };
@@ -123,6 +163,12 @@ function Home() {
   const handleCloseCardDetail = () => {
     setSelectedCard(null);
   };
+
+  const EmailVerificationMessage = () => (
+    <div>
+      
+    </div>
+  );
 
   return (
     <div
@@ -133,7 +179,7 @@ function Home() {
       <div className="flex justify-between">
         <img className="w-32 h-14" src={Logo} alt="Logo" />
         <div className="flex gap-4 items-center">
-          {token ? (
+          {token && isEmailVerified ? (
             <>
               <img
                 className="w-14 h-14 cursor-pointer"
@@ -170,34 +216,41 @@ function Home() {
       {/* Corps principal */}
       <div className="flex flex-col gap-8">
         <h1 className="text-center text-5xl">
-          {token
+          {token && isEmailVerified
             ? "Laissez les dés choisir l'univers à explorer !"
             : "Prêt·e pour une partie ?"}
         </h1>
 
-        {/* Cartes (si pas en auto-évaluation) */}
-        {!showAutoEvaluation && (
-          <div className="flex flex-row justify-between">
-            {cardData.map((cardInfo) => (
-              <div
-                key={cardInfo.id}
-                onClick={() => handleCardClick(cardInfo)}
-                className="cursor-pointer"
-              >
-                <Card
-                  image={cardInfo.image}
-                  title={cardInfo.title}
-                  alt={cardInfo.alt}
-                  color={cardInfo.color}
-                  backData={null}
-                  isFlippable={false}
-                />
-              </div>
-            ))}
+        {token && !isEmailVerified && (
+          <div className="flex justify-center">
+            <div className="max-w-2xl w-full">
+              <EmailVerificationMessage />
+            </div>
           </div>
         )}
 
-        {/* Boutons */}
+        {!showAutoEvaluation && (
+  <div className="flex flex-row justify-between">
+    {cardData.map((cardInfo) => (
+      <div
+        key={cardInfo.id}
+        onClick={() => handleCardClick(cardInfo)}
+        className="cursor-pointer"
+      >
+        <Card
+          image={cardInfo.image}
+          title={cardInfo.title}
+          alt={cardInfo.alt}
+          color={cardInfo.color}
+          backData={null}
+          isFlippable={false}
+        />
+      </div>
+    ))}
+  </div>
+)}
+
+
         {!token ? (
           <div className='flex justify-center gap-4'>
             <button
@@ -213,7 +266,7 @@ function Home() {
               Business Case
             </button>
           </div>
-        ) : (
+        ) : isEmailVerified ? (
           <div className='flex justify-center'>
             <button
               onClick={() => setShowAutoEvaluation(true)}
@@ -222,9 +275,8 @@ function Home() {
               Auto Évaluation
             </button>
           </div>
-        )}
+        ) : null}
 
-        {/* Composant Auto Évaluation */}
         {showAutoEvaluation && (
           <Autoevo onValidate={() => setShowAutoEvaluation(false)} />
         )}

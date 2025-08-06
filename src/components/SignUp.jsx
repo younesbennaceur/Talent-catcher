@@ -1,211 +1,159 @@
-import React, { useState, useRef } from 'react';
+import { useState, useEffect } from "react";
+import { useRegister } from "../hooks/useRegister";
+import useGoogleAuth from "../hooks/useGoogleAuth";
+import { onAuthStateChanged, reload } from 'firebase/auth';
+import { auth } from '../lib/firebase';
 
 function SignUp({ onClose, onLoginSwitch }) {
-  const [step, setStep] = useState(1); // 1: formulaire, 2: code validation
+  const { register, isLoading, error, setError } = useRegister();
+  const {
+    signInWithGoogle,
+    loading: googleLoading,
+    error: googleError,
+  } = useGoogleAuth();
+
+  const [rememberMe, setRememberMe] = useState(false);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: ''
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [code, setCode] = useState(['', '', '', '', '']);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const inputRefs = useRef([]);
+
+  // Écouter les changements d'état d'authentification pour détecter la vérification email
+  useEffect(() => {
+    if (step === 2) {
+      let intervalId;
+      
+      const checkEmailVerification = async () => {
+        if (auth.currentUser) {
+          // Recharger les données utilisateur depuis Firebase
+          await reload(auth.currentUser);
+          
+          if (auth.currentUser.emailVerified) {
+            // L'email a été vérifié, fermer le popup
+            clearInterval(intervalId);
+            setTimeout(() => {
+              onClose();
+            }, 1500); // Délai pour que l'utilisateur voie le message de succès
+            return true;
+          }
+        }
+        return false;
+      };
+
+      // Vérifier immédiatement
+      checkEmailVerification();
+
+      // Puis vérifier toutes les 3 secondes
+      intervalId = setInterval(checkEmailVerification, 3000);
+
+      // Écouteur d'authentification comme backup
+      const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          await reload(user);
+          if (user.emailVerified) {
+            clearInterval(intervalId);
+            setTimeout(() => {
+              onClose();
+            }, 1500);
+          }
+        }
+      });
+
+      // Nettoyer l'intervalle et l'écouteur quand le composant se démonte
+      return () => {
+        clearInterval(intervalId);
+        unsubscribe();
+      };
+    }
+  }, [step, onClose]);
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
-    if (error) setError('');
-  };
-
-  const handleCodeInputChange = (index, value) => {
-    const numericValue = value.replace(/\D/g, '');
-    
-    if (numericValue.length <= 1) {
-      const newCode = [...code];
-      newCode[index] = numericValue;
-      setCode(newCode);
-
-      if (error) setError('');
-
-      if (numericValue && index < 4) {
-        inputRefs.current[index + 1]?.focus();
-      }
-    }
-  };
-
-  const handleKeyDown = (index, e) => {
-    if (e.key === 'Backspace' && !code[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-    else if (e.key === 'ArrowLeft' && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-    else if (e.key === 'ArrowRight' && index < 4) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handlePaste = (e) => {
-    e.preventDefault();
-    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 5);
-    const newCode = [...code];
-    
-    for (let i = 0; i < pastedData.length && i < 5; i++) {
-      newCode[i] = pastedData[i];
-    }
-    
-    setCode(newCode);
-    
-    const nextIndex = Math.min(pastedData.length, 4);
-    inputRefs.current[nextIndex]?.focus();
+    if (error) setError("");
   };
 
   const handleSubmitForm = async () => {
-    if (!formData.email || !formData.password || !formData.confirmPassword) {
-      setError('Tous les champs sont obligatoires');
-      return;
-    }
+    await register(
+      formData.email,
+      formData.password,
+      formData.confirmPassword,
+      () => setStep(2)
+    );
+  };
 
-    if (formData.password !== formData.confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères');
-      return;
-    }
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      // Simuler l'envoi du formulaire d'inscription
-      const response = await fetch('https://talent-catcher.onrender.com/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setStep(2); // Passer à l'étape de validation du code
+  const handleGoogleSignup = async () => {
+    const user = await signInWithGoogle();
+    if (user) {
+      if (rememberMe) {
+        localStorage.setItem("rememberMe", "true");
       } else {
-        setError(data.message || 'Erreur lors de l\'inscription');
+        localStorage.removeItem("rememberMe");
       }
-    } catch (error) {
-      console.error('Erreur lors de l\'inscription:', error);
-      setError('Erreur de connexion au serveur');
-    } finally {
-      setIsLoading(false);
+      onLoginSwitch();
     }
   };
 
-  const handleValidateCode = async () => {
-    const fullCode = code.join('');
-    if (fullCode.length === 5) {
-      setIsLoading(true);
-      setError('');
-
+  const handleCheckEmailManually = async () => {
+    if (auth.currentUser) {
       try {
-        const response = await fetch('https://talent-catcher.onrender.com/validate-registration', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ 
-            email: formData.email,
-            code: fullCode 
-          }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          // Inscription réussie, rediriger vers la connexion
-          onLoginSwitch();
+        await reload(auth.currentUser);
+        if (auth.currentUser.emailVerified) {
+          setTimeout(() => {
+            onClose();
+          }, 1000);
         } else {
-          setError(data.message || 'Code invalide');
+          setError("Email pas encore vérifié. Veuillez cliquer sur le lien dans votre email.");
         }
-      } catch (error) {
-        console.error('Erreur lors de la validation:', error);
-        setError('Erreur de connexion au serveur');
-      } finally {
-        setIsLoading(false);
+      } catch (err) {
+        setError("Erreur lors de la vérification. Veuillez réessayer.");
       }
     }
   };
-
-  const isFormValid = formData.email && formData.password && formData.confirmPassword;
-  const isCodeComplete = code.every(digit => digit !== '');
 
   if (step === 2) {
     return (
       <div className="fixed inset-0 flex justify-center items-center z-50">
         <div className="bg-white rounded-4xl p-12 mx-4 flex flex-col gap-8 shadow-lg relative border-3 border-[#023045] border-solid max-w-md w-full">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-6 text-gray-700 hover:text-gray-900 font-bold text-3xl"
-            aria-label="Fermer"
-          >
-            ×
-          </button>
-
+          {/* Pas de bouton X dans cette étape */}
+          
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-[#023045] mb-4">Dernière étape</h1>
-            <p className="text-lg text-gray-600">
-              Scannez le QR code fourni avec le jeu, et entrez le code affiché.
+            <div className="text-6xl mb-4">📧</div>
+            <h1 className="text-3xl font-bold text-[#023045] mb-4">
+              Vérifiez votre email
+            </h1>
+            <p className="text-lg text-gray-600 mb-4">
+              Un email de vérification a été envoyé à :
+            </p>
+            <p className="text-lg font-semibold text-[#023045] mb-6">
+              {formData.email}
+            </p>
+            <p className="text-sm text-gray-500 ">
+              Cliquez sur le lien dans l'email pour activer votre compte.
+              Cette fenêtre se fermera automatiquement une fois votre email vérifié.
             </p>
           </div>
 
-          <div className="flex justify-center gap-3">
-            {code.map((digit, index) => (
-              <input
-                key={index}
-                ref={el => inputRefs.current[index] = el}
-                type="text"
-                value={digit}
-                onChange={(e) => handleCodeInputChange(index, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(index, e)}
-                onPaste={index === 0 ? handlePaste : undefined}
-                className={`w-12 h-12 text-center text-2xl font-bold border-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#023045] focus:border-transparent ${
-                  error ? 'border-red-500' : 'border-[#023045]'
-                }`}
-                maxLength={1}
-                inputMode="numeric"
-                disabled={isLoading}
-              />
-            ))}
-          </div>
-
           {error && (
-            <div className="text-red-500 text-center font-medium">
-              {error}
-            </div>
+            <div className="text-red-500 text-center font-medium text-sm mb-4">{error}</div>
           )}
 
-          <button
-            onClick={handleValidateCode}
-            disabled={!isCodeComplete || isLoading}
-            className={`block mx-auto text-2xl font-bold py-3 px-8 rounded-xl transition-colors ${
-              isCodeComplete && !isLoading
-                ? 'bg-[#023045] hover:bg-[#021245] text-white cursor-pointer'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
-          >
-            {isLoading ? 'Validation...' : 'Valider'}
-          </button>
+          <div className="flex flex-col gap-3">
+         
+            
+            <div className="text-center">
+              <p className="text-sm text-gray-400 ">
+                Vous n'avez pas reçu l'email ? Vérifiez vos spams.
+              </p>
+             
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -221,21 +169,21 @@ function SignUp({ onClose, onLoginSwitch }) {
         >
           ×
         </button>
-
         <div className="text-center">
           <h1 className="text-3xl font-bold text-[#023045]">Créer un compte</h1>
           <p className="text-lg text-gray-600">
             Créer un compte pour accéder au jeu
           </p>
         </div>
-
         <div className="flex flex-col ">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
             <input
               type="email"
               value={formData.email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
+              onChange={(e) => handleInputChange("email", e.target.value)}
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#023045] text-lg"
               placeholder="jonas_kahnwald@gmail.com"
               disabled={isLoading}
@@ -243,12 +191,14 @@ function SignUp({ onClose, onLoginSwitch }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Mot de passe
+            </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 value={formData.password}
-                onChange={(e) => handleInputChange('password', e.target.value)}
+                onChange={(e) => handleInputChange("password", e.target.value)}
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#023045] text-lg pr-12"
                 placeholder="Mot de passe"
                 disabled={isLoading}
@@ -264,12 +214,16 @@ function SignUp({ onClose, onLoginSwitch }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Confirmer le mot de passe</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Confirmer le mot de passe
+            </label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 value={formData.confirmPassword}
-                onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("confirmPassword", e.target.value)
+                }
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#023045] text-lg pr-12"
                 placeholder="Confirmer le mot de passe"
                 disabled={isLoading}
@@ -284,34 +238,37 @@ function SignUp({ onClose, onLoginSwitch }) {
             </div>
           </div>
         </div>
-
         {error && (
-          <div className="text-red-500 text-center font-medium">
-            {error}
-          </div>
+          <div className="text-red-500 text-center font-medium">{error}</div>
         )}
+       <button
+  onClick={handleSubmitForm}
+  disabled={isLoading}
+  className={`w-full text-xl font-bold py-3 px-8 rounded-xl transition-colors ${
+    !isLoading
+      ? "bg-[#023045] hover:bg-[#021245] text-white cursor-pointer"
+      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+  }`}
+>
 
-        <button
-          onClick={handleSubmitForm}
-          disabled={!isFormValid || isLoading}
-          className={`w-full text-xl font-bold py-3 px-8 rounded-xl transition-colors ${
-            isFormValid && !isLoading
-              ? 'bg-[#023045] hover:bg-[#021245] text-white cursor-pointer'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
-        >
-          {isLoading ? 'Inscription...' : "S'inscrire"}
+          {isLoading ? "Inscription..." : "S'inscrire"}
         </button>
-
         <div className="text-center">
           <span className="text-gray-600">ou</span>
         </div>
-
-        <button className="w-full border-2 border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+        <button
+          onClick={handleGoogleSignup}
+          disabled={googleLoading}
+          className="w-full border-2 border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+        >
           <span className="text-lg">G</span>
-          S'inscrire avec Google
+          {googleLoading ? "Inscription..." : "S'inscrire avec Google"}
         </button>
-
+        {googleError && (
+          <div className="text-red-500 text-center font-medium">
+            {googleError.message}
+          </div>
+        )}
         <div className="text-center">
           <span className="text-gray-600">Déjà un compte ? </span>
           <button
@@ -322,6 +279,7 @@ function SignUp({ onClose, onLoginSwitch }) {
             Se connecter
           </button>
         </div>
+       
       </div>
     </div>
   );

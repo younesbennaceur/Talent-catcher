@@ -1,70 +1,73 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
+import useGoogleAuth from "../hooks/useGoogleAuth";
+import ResetPassword from "./ResetPassword";
 
 function Login({ onClose, onValidate, onRegisterSwitch }) {
+  const { login, isLoading, error, setError } = useLogin();
+  const {
+    signInWithGoogle,
+    loading: googleLoading,
+    error: googleError,
+  } = useGoogleAuth();
+
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-    if (error) setError('');
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (error) setError("");
   };
 
   const handleSubmit = async () => {
     if (!formData.email || !formData.password) {
-      setError('Tous les champs sont obligatoires');
+      setError("Tous les champs sont obligatoires");
       return;
     }
-
-    // Mode test pour développement - accès direct avec test@test.com / test123
-    if (formData.email === 'test@test.com' && formData.password === 'test123') {
-      setIsLoading(true);
-      setTimeout(() => {
-        onValidate('test-token');
-        setIsLoading(false);
-      }, 1000);
-      return;
-    }
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch('https://talent-catcher.onrender.com/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        onValidate(data.token || 'authenticated');
+    await login(formData.email, formData.password, (user) => {
+      if (rememberMe) {
+        localStorage.setItem("rememberMe", "true");
       } else {
-        setError(data.message || 'Email ou mot de passe incorrect');
+        localStorage.removeItem("rememberMe");
       }
-    } catch (error) {
-      console.error('Erreur lors de la connexion:', error);
-      setError('Erreur de connexion au serveur. Essayez test@test.com / test123 pour le mode test');
-    } finally {
-      setIsLoading(false);
+      onValidate(user);
+    });
+  };
+
+  const handleGoogleLogin = async () => {
+    const user = await signInWithGoogle();
+    if (user) {
+      if (rememberMe) {
+        localStorage.setItem("rememberMe", "true");
+      } else {
+        localStorage.removeItem("rememberMe");
+      }
+      onValidate(user);
     }
   };
 
-  const isFormValid = formData.email && formData.password;
+  const handleForgotPassword = () => {
+    setShowResetPassword(true);
+  };
+
+  const handleBackToLogin = () => {
+    setShowResetPassword(false);
+  };
+
+  // Si on affiche le composant de réinitialisation, on le retourne
+  if (showResetPassword) {
+    return (
+      <ResetPassword 
+        onClose={onClose} 
+        onBackToLogin={handleBackToLogin}
+      />
+    );
+  }
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50">
@@ -76,22 +79,21 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
         >
           ×
         </button>
-
         <div className="text-center">
           <h1 className="text-3xl font-bold text-[#023045] ">Se connecter</h1>
           <p className="text-lg text-gray-600">
             Connecter vous pour accéder au jeu
           </p>
-         
         </div>
-
         <div className="flex flex-col gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">Email</label>
+            <label className="block text-sm font-medium text-gray-700 ">
+              Email
+            </label>
             <input
               type="email"
               value={formData.email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
+              onChange={(e) => handleInputChange("email", e.target.value)}
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#023045] text-lg"
               placeholder="jonas_kahnwald@gmail.com"
               disabled={isLoading}
@@ -99,12 +101,14 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">Mot de passe</label>
+            <label className="block text-sm font-medium text-gray-700 ">
+              Mot de passe
+            </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 value={formData.password}
-                onChange={(e) => handleInputChange('password', e.target.value)}
+                onChange={(e) => handleInputChange("password", e.target.value)}
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#023045] text-lg pr-12"
                 placeholder="Mot de passe"
                 disabled={isLoading}
@@ -119,7 +123,6 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
             </div>
           </div>
         </div>
-
         <div className="flex items-center justify-between">
           <label className="flex items-center gap-2">
             <input
@@ -130,38 +133,44 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
             />
             <span className="text-sm text-gray-600">Rester connecté</span>
           </label>
-          <button className="text-sm text-[#023045] underline hover:text-[#021245]">
+          <button 
+            type="button"
+            onClick={handleForgotPassword}
+            className="text-sm text-[#023045] underline hover:text-[#021245]"
+          >
             Mot de passe oublié ?
           </button>
         </div>
-
         {error && (
-          <div className="text-red-500 text-center font-medium">
-            {error}
-          </div>
+          <div className="text-red-500 text-center font-medium">{error}</div>
         )}
-
         <button
           onClick={handleSubmit}
-          disabled={!isFormValid || isLoading}
+          disabled={isLoading}
           className={`w-full text-xl font-bold py-3 px-8 rounded-xl transition-colors ${
-            isFormValid && !isLoading
-              ? 'bg-[#023045] hover:bg-[#021245] text-white cursor-pointer'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            !isLoading
+              ? "bg-[#023045] hover:bg-[#021245] text-white cursor-pointer"
+              : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          {isLoading ? 'Connexion...' : 'Se connecter'}
+          {isLoading ? "Connexion..." : "Se connecter"}
         </button>
-
         <div className="text-center">
           <span className="text-gray-600">ou</span>
         </div>
-
-        <button className="w-full border-2 border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+        <button
+          onClick={handleGoogleLogin}
+          disabled={googleLoading}
+          className="w-full border-2 border-gray-300 text-gray-700 font-medium py-3 px-8 rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+        >
           <span className="text-lg">G</span>
-          Se connecter avec Google
+          {googleLoading ? "Connexion..." : "Se connecter avec Google"}
         </button>
-
+        {googleError && (
+          <div className="text-red-500 text-center font-medium">
+            {googleError.message}
+          </div>
+        )}
         <div className="text-center">
           <span className="text-gray-600">Pas encore de compte ? </span>
           <button
