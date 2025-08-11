@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "talent-catcher",
+    "staging": "talent-catcher"
+  },
+  "targets": {},
+  "etags": {}
+}

@@ -4,6 +4,7 @@ import { auth } from '../lib/firebase';
 import useGoogleAuth from '../hooks/useGoogleAuth';
 import Card from '../components/Card';
 import CardDetailPage from '../components/CardDetailPage';
+import FichePedagogique from '../components/FichePedagogique';
 import GameStart from '../assets/GameStart.png';
 import Logo from '../assets/Logo.png';
 import Rules from '../assets/Rules.png';
@@ -19,6 +20,7 @@ import se from '../data/se.json';
 import ia from '../data/ia.json';
 import me from '../data/me.json';
 import skillsData from '../data/sk.json';
+import fichesPedagogiques from '../data/pdf.json';
 
 import Regle from '../components/Regle';
 import Login from '../components/Login';
@@ -39,6 +41,8 @@ function Home() {
   const [playedCards, setPlayedCards] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showAutoEvaluation, setShowAutoEvaluation] = useState(false);
+  const [showFichePedagogique, setShowFichePedagogique] = useState(false);
+  const [selectedFicheData, setSelectedFicheData] = useState(null);
 
   const [token, setToken] = useState(false);
   const [user, setUser] = useState(null);
@@ -164,6 +168,30 @@ function Home() {
     setSelectedCard(null);
   };
 
+  const handleViewFichePedagogique = (ficheType) => {
+    // Mapping des types de fiche vers les titres des fiches pédagogiques
+    const ficheMap = {
+      'ia': 'L\'IA DANS LA SCORECARD',
+      'skills': 'DÉVELOPPER LES SOFT SKILLS : ANALYSE, CONFIANCE, ADAPTATION, CURIOSITÉ, CRÉATIVITÉ, BON RELATIONNEL, ÉCOUTE ET RÉSILIENCE', 
+      'sourcing': 'LES TECHNIQUES DE SOURCING',
+      'me': 'COMMENT SEDUIRE ET ABORDER LES CANDIDATS'
+    };
+    
+    const titreRecherche = ficheMap[ficheType];
+    const ficheData = fichesPedagogiques.find(fiche => fiche.titre === titreRecherche);
+    
+    if (ficheData) {
+      setSelectedFicheData(ficheData);
+      setShowFichePedagogique(true);
+    }
+  };
+
+  const handleCloseFichePedagogique = () => {
+    setShowFichePedagogique(false);
+    setSelectedFicheData(null);
+    // Le pop-up de résultat va automatiquement réapparaître car ficheIsOpen devient false
+  };
+
   const EmailVerificationMessage = () => (
     <div>
       
@@ -230,26 +258,25 @@ function Home() {
         )}
 
         {!showAutoEvaluation && (
-  <div className="flex flex-row justify-between">
-    {cardData.map((cardInfo) => (
-      <div
-        key={cardInfo.id}
-        onClick={() => handleCardClick(cardInfo)}
-        className="cursor-pointer"
-      >
-        <Card
-          image={cardInfo.image}
-          title={cardInfo.title}
-          alt={cardInfo.alt}
-          color={cardInfo.color}
-          backData={null}
-          isFlippable={false}
-        />
-      </div>
-    ))}
-  </div>
-)}
-
+          <div className="flex flex-row justify-between">
+            {cardData.map((cardInfo) => (
+              <div
+                key={cardInfo.id}
+                onClick={() => handleCardClick(cardInfo)}
+                className="cursor-pointer"
+              >
+                <Card
+                  image={cardInfo.image}
+                  title={cardInfo.title}
+                  alt={cardInfo.alt}
+                  color={cardInfo.color}
+                  backData={null}
+                  isFlippable={false}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         {!token ? (
           <div className='flex justify-center gap-4'>
@@ -278,7 +305,11 @@ function Home() {
         ) : null}
 
         {showAutoEvaluation && (
-          <Autoevo onValidate={() => setShowAutoEvaluation(false)} />
+          <Autoevo 
+            onValidate={() => setShowAutoEvaluation(false)} 
+            onViewFichePedagogique={handleViewFichePedagogique}
+            ficheIsOpen={showFichePedagogique}
+          />
         )}
       </div>
 
@@ -303,6 +334,12 @@ function Home() {
           onClose={handleCloseCardDetail}
           isPaused={isPaused}
           onTogglePause={togglePause}
+        />
+      )}
+      {showFichePedagogique && selectedFicheData && (
+        <FichePedagogique 
+          ficheData={selectedFicheData}
+          onClose={handleCloseFichePedagogique}
         />
       )}
     </div>
