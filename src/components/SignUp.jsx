@@ -3,8 +3,9 @@ import { useRegister } from "../hooks/useRegister";
 import useGoogleAuth from "../hooks/useGoogleAuth";
 import { onAuthStateChanged, reload } from 'firebase/auth';
 import { auth } from '../lib/firebase';
+import CodeValidation from './CodeValidation';
 
-function SignUp({ onClose, onLoginSwitch }) {
+function SignUp({ onClose, onLoginSwitch, onCodeValidation }) { // 👈 Nouvelle prop
   const { register, isLoading, error, setError } = useRegister();
   const {
     signInWithGoogle,
@@ -21,55 +22,45 @@ function SignUp({ onClose, onLoginSwitch }) {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isGoogleSignup, setIsGoogleSignup] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null); // 👈 Pour stocker l'utilisateur
 
-  // Écouter les changements d'état d'authentification pour détecter la vérification email
   useEffect(() => {
-    if (step === 2) {
+    if (step === 2 && !isGoogleSignup) {
       let intervalId;
       
       const checkEmailVerification = async () => {
         if (auth.currentUser) {
-          // Recharger les données utilisateur depuis Firebase
           await reload(auth.currentUser);
           
           if (auth.currentUser.emailVerified) {
-            // L'email a été vérifié, fermer le popup
             clearInterval(intervalId);
-            setTimeout(() => {
-              onClose();
-            }, 1500); // Délai pour que l'utilisateur voie le message de succès
+            setStep(3);
             return true;
           }
         }
         return false;
       };
 
-      // Vérifier immédiatement
       checkEmailVerification();
-
-      // Puis vérifier toutes les 3 secondes
       intervalId = setInterval(checkEmailVerification, 3000);
 
-      // Écouteur d'authentification comme backup
       const unsubscribe = onAuthStateChanged(auth, async (user) => {
         if (user) {
           await reload(user);
           if (user.emailVerified) {
             clearInterval(intervalId);
-            setTimeout(() => {
-              onClose();
-            }, 1500);
+            setStep(3);
           }
         }
       });
 
-      // Nettoyer l'intervalle et l'écouteur quand le composant se démonte
       return () => {
         clearInterval(intervalId);
         unsubscribe();
       };
     }
-  }, [step, onClose]);
+  }, [step, isGoogleSignup]);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
@@ -91,38 +82,47 @@ function SignUp({ onClose, onLoginSwitch }) {
   const handleGoogleSignup = async () => {
     const user = await signInWithGoogle();
     if (user) {
+      setIsGoogleSignup(true);
+      setCurrentUser(user); // 👈 Stocker l'utilisateur
+      setStep(3);
+      
       if (rememberMe) {
         localStorage.setItem("rememberMe", "true");
       } else {
         localStorage.removeItem("rememberMe");
       }
-      onLoginSwitch();
     }
   };
 
-  const handleCheckEmailManually = async () => {
-    if (auth.currentUser) {
-      try {
-        await reload(auth.currentUser);
-        if (auth.currentUser.emailVerified) {
-          setTimeout(() => {
-            onClose();
-          }, 1000);
-        } else {
-          setError("Email pas encore vérifié. Veuillez cliquer sur le lien dans votre email.");
-        }
-      } catch (err) {
-        setError("Erreur lors de la vérification. Veuillez réessayer.");
-      }
+  const handleCodeValidationSuccess = () => {
+    // 👇 Marquer le code comme validé pour cet utilisateur
+    const userId = isGoogleSignup ? currentUser?.uid : auth.currentUser?.uid;
+    if (userId && onCodeValidation) {
+      onCodeValidation(userId);
     }
+    
+    // Fermer le modal après un délai
+    setTimeout(() => {
+      onClose();
+    }, 1000);
   };
 
+  // Étape 3: Validation du code
+  if (step === 3) {
+    return (
+      <CodeValidation 
+        onValidate={handleCodeValidationSuccess} // 👈 Fonction modifiée
+        onClose={onClose}
+        isGoogleSignup={isGoogleSignup}
+      />
+    );
+  }
+
+  // Étape 2: Vérification email (seulement pour inscription normale)
   if (step === 2) {
     return (
       <div className="fixed inset-0 flex justify-center items-center z-50">
         <div className="bg-white rounded-4xl p-12 mx-4 flex flex-col gap-8 shadow-lg relative border-3 border-[#023045] border-solid max-w-md w-full">
-          {/* Pas de bouton X dans cette étape */}
-          
           <div className="text-center">
             <div className="text-6xl mb-4">📧</div>
             <h1 className="text-3xl font-bold text-[#023045] mb-4">
@@ -136,7 +136,7 @@ function SignUp({ onClose, onLoginSwitch }) {
             </p>
             <p className="text-sm text-gray-500 ">
               Cliquez sur le lien dans l'email pour activer votre compte.
-              Cette fenêtre se fermera automatiquement une fois votre email vérifié.
+              Une fois votre email vérifié, vous pourrez entrer le code du jeu.
             </p>
           </div>
 
@@ -145,13 +145,10 @@ function SignUp({ onClose, onLoginSwitch }) {
           )}
 
           <div className="flex flex-col gap-3">
-         
-            
             <div className="text-center">
               <p className="text-sm text-gray-400 ">
                 Vous n'avez pas reçu l'email ? Vérifiez vos spams.
               </p>
-             
             </div>
           </div>
         </div>
@@ -159,6 +156,7 @@ function SignUp({ onClose, onLoginSwitch }) {
     );
   }
 
+  // Étape 1: Formulaire d'inscription
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50">
       <div className="bg-white rounded-4xl p-8 mx-4 flex flex-col gap-8 shadow-lg relative border-3 border-[#023045] border-solid max-w-md w-full">
@@ -241,16 +239,15 @@ function SignUp({ onClose, onLoginSwitch }) {
         {error && (
           <div className="text-red-500 text-center font-medium">{error}</div>
         )}
-       <button
-  onClick={handleSubmitForm}
-  disabled={isLoading}
-  className={`w-full text-xl font-bold py-3 px-8 rounded-xl transition-colors ${
-    !isLoading
-      ? "bg-[#023045] hover:bg-[#021245] text-white cursor-pointer"
-      : "bg-gray-300 text-gray-500 cursor-not-allowed"
-  }`}
->
-
+        <button
+          onClick={handleSubmitForm}
+          disabled={isLoading}
+          className={`w-full text-xl font-bold py-3 px-8 rounded-xl transition-colors ${
+            !isLoading
+              ? "bg-[#023045] hover:bg-[#021245] text-white cursor-pointer"
+              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+          }`}
+        >
           {isLoading ? "Inscription..." : "S'inscrire"}
         </button>
         <div className="text-center">
@@ -279,7 +276,6 @@ function SignUp({ onClose, onLoginSwitch }) {
             Se connecter
           </button>
         </div>
-       
       </div>
     </div>
   );

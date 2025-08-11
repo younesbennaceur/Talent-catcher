@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import useGoogleAuth from "../hooks/useGoogleAuth";
 import ResetPassword from "./ResetPassword";
+import CodeValidation from "./CodeValidation"; // 👈 Import ajouté
 
-function Login({ onClose, onValidate, onRegisterSwitch }) {
+function Login({ onClose, onValidate, onRegisterSwitch, onCodeValidation }) { // 👈 Nouvelle prop
   const { login, isLoading, error, setError } = useLogin();
   const {
     signInWithGoogle,
@@ -18,6 +19,10 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [showResetPassword, setShowResetPassword] = useState(false);
+  
+  // 👇 Nouveaux states pour gérer le code Google
+  const [showCodeValidation, setShowCodeValidation] = useState(false);
+  const [googleUser, setGoogleUser] = useState(null);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -42,13 +47,46 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
   const handleGoogleLogin = async () => {
     const user = await signInWithGoogle();
     if (user) {
-      if (rememberMe) {
-        localStorage.setItem("rememberMe", "true");
+      // 👇 Vérifier si le code a déjà été validé pour cet utilisateur
+      const codeValidated = localStorage.getItem(`codeValidated_${user.uid}`);
+      
+      if (codeValidated === 'true') {
+        // Code déjà validé, connexion directe
+        if (rememberMe) {
+          localStorage.setItem("rememberMe", "true");
+        } else {
+          localStorage.removeItem("rememberMe");
+        }
+        onValidate(user);
       } else {
-        localStorage.removeItem("rememberMe");
+        // Code pas encore validé, demander la validation
+        setGoogleUser(user);
+        setShowCodeValidation(true);
       }
-      onValidate(user);
     }
+  };
+
+  // 👇 Nouvelle fonction pour gérer la validation du code Google
+  const handleCodeValidationSuccess = () => {
+    // Marquer le code comme validé
+    if (googleUser && onCodeValidation) {
+      onCodeValidation(googleUser.uid);
+    }
+    
+    // Appliquer la préférence "Rester connecté"
+    if (rememberMe) {
+      localStorage.setItem("rememberMe", "true");
+    } else {
+      localStorage.removeItem("rememberMe");
+    }
+    
+    // Valider la connexion
+    onValidate(googleUser);
+    
+    // Fermer le modal après un délai
+    setTimeout(() => {
+      onClose();
+    }, 1000);
   };
 
   const handleForgotPassword = () => {
@@ -58,6 +96,17 @@ function Login({ onClose, onValidate, onRegisterSwitch }) {
   const handleBackToLogin = () => {
     setShowResetPassword(false);
   };
+
+  // 👇 Si on affiche la validation du code Google
+  if (showCodeValidation) {
+    return (
+      <CodeValidation 
+        onValidate={handleCodeValidationSuccess}
+        onClose={onClose}
+        isGoogleSignup={true} // Utiliser le même style que pour Google signup
+      />
+    );
+  }
 
   // Si on affiche le composant de réinitialisation, on le retourne
   if (showResetPassword) {

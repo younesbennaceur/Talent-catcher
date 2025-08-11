@@ -47,6 +47,7 @@ function Home() {
   const [token, setToken] = useState(false);
   const [user, setUser] = useState(null);
   const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isCodeValidated, setIsCodeValidated] = useState(false);
 
   const { logout } = useGoogleAuth();
 
@@ -56,19 +57,22 @@ function Home() {
         setToken(true);
         setUser(firebaseUser);
         setIsEmailVerified(firebaseUser.emailVerified);
+        
+        const codeValidated = localStorage.getItem(`codeValidated_${firebaseUser.uid}`);
+        setIsCodeValidated(codeValidated === 'true');
       } else {
         setToken(false);
         setUser(null);
         setIsEmailVerified(false);
+        setIsCodeValidated(false);
       }
     });
     return () => unsubscribe();
   }, []);
 
-  // 👇 Ajout ici : vérification toutes les 3 sec si email non vérifié
   useEffect(() => {
     let intervalId;
-    if (token && user && !isEmailVerified) {
+    if (token && user && !isEmailVerified && !isCodeValidated) {
       const checkEmailVerification = async () => {
         try {
           await reload(auth.currentUser);
@@ -82,13 +86,22 @@ function Home() {
       intervalId = setInterval(checkEmailVerification, 3000);
       return () => clearInterval(intervalId);
     }
-  }, [token, user, isEmailVerified]);
+  }, [token, user, isEmailVerified, isCodeValidated]);
 
   const handleLoginValidate = (userOrToken) => {
     setToken(true);
     setUser(userOrToken);
     setIsEmailVerified(userOrToken.emailVerified || true);
+    
+    const codeValidated = localStorage.getItem(`codeValidated_${userOrToken.uid}`);
+    setIsCodeValidated(codeValidated === 'true');
+    
     setShowLogin(false);
+  };
+
+  const handleCodeValidation = (userId) => {
+    localStorage.setItem(`codeValidated_${userId}`, 'true');
+    setIsCodeValidated(true);
   };
 
   const handleLogout = async () => {
@@ -96,6 +109,7 @@ function Home() {
     setToken(false);
     setUser(null);
     setIsEmailVerified(false);
+    setIsCodeValidated(false);
     setIsPaused(false);
     setSelectedCard(null);
     setPlayedCards([]);
@@ -157,7 +171,7 @@ function Home() {
   };
 
   const handleCardClick = (cardInfo) => {
-    if (token && isEmailVerified) {
+    if (token && isEmailVerified && isCodeValidated) {
       const randomBack = getRandomBackData(cardInfo.backData);
       const cardWithRandomBack = { ...cardInfo, backData: randomBack };
       setSelectedCard(cardWithRandomBack);
@@ -169,7 +183,6 @@ function Home() {
   };
 
   const handleViewFichePedagogique = (ficheType) => {
-    // Mapping des types de fiche vers les titres des fiches pédagogiques
     const ficheMap = {
       'ia': 'L\'IA DANS LA SCORECARD',
       'skills': 'DÉVELOPPER LES SOFT SKILLS : ANALYSE, CONFIANCE, ADAPTATION, CURIOSITÉ, CRÉATIVITÉ, BON RELATIONNEL, ÉCOUTE ET RÉSILIENCE', 
@@ -189,14 +202,7 @@ function Home() {
   const handleCloseFichePedagogique = () => {
     setShowFichePedagogique(false);
     setSelectedFicheData(null);
-    // Le pop-up de résultat va automatiquement réapparaître car ficheIsOpen devient false
   };
-
-  const EmailVerificationMessage = () => (
-    <div>
-      
-    </div>
-  );
 
   return (
     <div
@@ -207,7 +213,7 @@ function Home() {
       <div className="flex justify-between">
         <img className="w-32 h-14" src={Logo} alt="Logo" />
         <div className="flex gap-4 items-center">
-          {token && isEmailVerified ? (
+          {token && isEmailVerified && isCodeValidated ? (
             <>
               <img
                 className="w-14 h-14 cursor-pointer"
@@ -244,18 +250,10 @@ function Home() {
       {/* Corps principal */}
       <div className="flex flex-col gap-8">
         <h1 className="text-center text-5xl">
-          {token && isEmailVerified
+          {token && isEmailVerified && isCodeValidated
             ? "Laissez les dés choisir l'univers à explorer !"
             : "Prêt·e pour une partie ?"}
         </h1>
-
-        {token && !isEmailVerified && (
-          <div className="flex justify-center">
-            <div className="max-w-2xl w-full">
-              <EmailVerificationMessage />
-            </div>
-          </div>
-        )}
 
         {!showAutoEvaluation && (
           <div className="flex flex-row justify-between">
@@ -293,7 +291,7 @@ function Home() {
               Business Case
             </button>
           </div>
-        ) : isEmailVerified ? (
+        ) : isEmailVerified && isCodeValidated ? (
           <div className='flex justify-center'>
             <button
               onClick={() => setShowAutoEvaluation(true)}
@@ -320,12 +318,14 @@ function Home() {
           onClose={handleCloseAuth}
           onValidate={handleLoginValidate}
           onRegisterSwitch={handleSwitchToRegistration}
+          onCodeValidation={handleCodeValidation}
         />
       )}
       {showRegistration && (
         <SignUp
           onClose={handleCloseAuth}
           onLoginSwitch={handleSwitchToLogin}
+          onCodeValidation={handleCodeValidation}
         />
       )}
       {selectedCard && (
