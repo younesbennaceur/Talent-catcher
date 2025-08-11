@@ -18,23 +18,24 @@ import fichesPedagogiques from '../data/pdf.json'
 function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [timer, setTimer] = useState(240); // 4 minutes = 240 secondes
+  const [timer, setTimer] = useState(240); // 10 secondes
   const [showFichePedagogique, setShowFichePedagogique] = useState(false);
 
   useEffect(() => {
     if (isPaused) return;
 
+    // Supprimer la fermeture automatique - le timer continue mais ne ferme plus la carte
     if (timer === 0) {
-      onClose();  // Fin du tour : ferme la page détails
+      // Ne plus fermer automatiquement
       return;
     }
 
     const interval = setInterval(() => {
-      setTimer(t => t - 1);
+      setTimer(t => Math.max(0, t - 1)); // S'arrête à 0
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timer, isPaused, onClose]);
+  }, [timer, isPaused]); // Supprimer onClose des dépendances
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
@@ -114,8 +115,9 @@ function CardDetailPage({ cardData, onClose, isPaused = false, onTogglePause }) 
       <div className="flex justify-between items-center">
         <img className="w-32 h-14" src={Logo} alt="Logo" />
         <div className="flex gap-4 items-center">
-          <div className="text-[#023047] font-bold text-xl">
+          <div className={`font-bold text-xl ${timer === 0 ? 'text-red-500' : 'text-[#023047]'}`}>
             Temps restant: {formatTime(timer)}
+            {timer === 0 && <span className="ml-2">⏰ Temps écoulé</span>}
           </div>
           <img
             className="w-14 h-14 cursor-pointer"
